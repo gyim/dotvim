@@ -45,6 +45,7 @@ set autoread
 set noeol binary "do not leave an empty line at the end of file"
 set wildmenu
 set laststatus=2
+set encoding=utf-8
 
 " Suppress warnings
 set hidden
@@ -68,6 +69,7 @@ syntax on
 let moria_style = 'black'
 colorscheme moria
 set guifont=Monaco:h12
+let g:Powerline_symbols = 'compatible'
 set noantialias
 
 " good colorschemes: moria wombat slate desert pyte mayansmoke
