@@ -93,13 +93,12 @@ nmap <leader>j <C-w>j
 nmap <leader>k <C-w>k
 nmap <leader>l <C-w>l
 nmap <leader>i :only<CR>
-"nmap <leader>q :q<CR>
 
 " Buffer management
 nmap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " Command-mode navigation
-nmap <C-h> 5h
+nmap <C-k> 5k
 nmap <C-j> 5j
 
 " Better indent
