@@ -121,6 +121,11 @@ imap <D-S-CR> <Esc>A {<CR>
 " Insert mode navigation
 imap <C-l> <Esc>A
 
+" Git commands
+nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gd :Gdiff<cr>
+nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
+
 """"""""""""""""""""""""""""""""""""""""
 " Commands
 """"""""""""""""""""""""""""""""""""""""
