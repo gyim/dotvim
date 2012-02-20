@@ -21,6 +21,13 @@ nunmap <C-o>
 nmap <C-i> :LustyBufferExplorer<CR>
 nmap <C-o> :LustyFilesystemExplorer<CR>
 
+" delimitMate fixes for MacVim
+" (see https://github.com/Raimondi/delimitMate/issues/63#issuecomment-3194225)
+imap <M-Left> <Plug>delimitMateC-Left
+imap <M-Right> <Plug>delimitMateC-Right
+imap <D-Left> <Plug>delimitMateHome
+imap <D-Right> <Plug>delimitMateEnd
+
 " --- end ---
 endif
 
