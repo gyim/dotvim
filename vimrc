@@ -163,6 +163,8 @@ endfunction
 au FileType c,objc,cpp call FoldPragma()
 au FileType c,objc,cpp set noexpandtab
 au FileType c,objc,cpp set commentstring=//%s
+au FileType c,objc,cpp nmap [p ?^#pragma mark -<CR>
+au FileType c,objc,cpp nmap ]p /^#pragma mark -<CR>
 
 " Python
 au FileType python set expandtab
