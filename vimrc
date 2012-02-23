@@ -52,6 +52,13 @@ set hidden
 let g:LustyExplorerSuppressRubyWarning = 1
 set visualbell
 
+" GUI settings
+set guioptions=egmt
+if has('gui')
+	set cursorline number
+	highlight Cursor guifg=white guibg=steelblue
+endif
+
 """"""""""""""""""""""""""""""""""""""""
 " Editing
 """"""""""""""""""""""""""""""""""""""""
@@ -81,8 +88,14 @@ let g:NERDTreeDirArrows=0
 """"""""""""""""""""""""""""""""""""""""
 
 " Commands
-nmap <C-i> :Unite buffer<CR>
-nmap <C-o> :Unite file<CR>
+if has('ruby')
+	nmap <C-i> :LustyBufferExplorer<CR>
+	nmap <C-o> :LustyFilesystemExplorer<CR>
+else
+	nmap <C-i> :Unite buffer<CR>
+	nmap <C-o> :Unite file<CR>
+endif
+
 nmap <A-D-Up> :A<CR>
 nmap ,. :bnext<CR>
 nmap ,m :bprev<CR>
@@ -131,11 +144,11 @@ nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
 """"""""""""""""""""""""""""""""""""""""
 " Commands
 """"""""""""""""""""""""""""""""""""""""
-command -nargs=1 SO SessionOpen <args>
-command SS SessionSave
-command SL SessionList
-command SA SessionSaveAs
-command SC SessionClose
+command! -nargs=1 SO SessionOpen <args>
+command! SS SessionSave
+command! SL SessionList
+command! SA SessionSaveAs
+command! SC SessionClose
 
 """"""""""""""""""""""""""""""""""""""""
 " Plugin settings
