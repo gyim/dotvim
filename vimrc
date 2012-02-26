@@ -89,11 +89,11 @@ let g:NERDTreeDirArrows=0
 
 " Commands
 if has('ruby')
-	nmap <C-i> :LustyBufferExplorer<CR>
-	nmap <C-o> :LustyFilesystemExplorer<CR>
+	nmap <C-l> :LustyBufferExplorer<CR>
+	nmap <leader>O :LustyFilesystemExplorer<CR>
 else
-	nmap <C-i> :Unite buffer<CR>
-	nmap <C-o> :Unite file<CR>
+	nmap <C-l> :Unite buffer<CR>
+	nmap <leader>O :Unite file<CR>
 endif
 
 nmap <A-D-Up> :A<CR>
@@ -101,6 +101,8 @@ nmap ,. :bnext<CR>
 nmap ,m :bprev<CR>
 nmap <leader>n :NERDTree<CR>
 nmap <leader>o :Unite outline<CR>
+nmap <leader>uo :Unite file<CR>
+nmap <leader>ui :Unite buffer<CR>
 
 " Switch between buffers
 nmap <leader>h <C-w>h
@@ -176,8 +178,8 @@ endfunction
 au FileType c,objc,cpp call FoldPragma()
 au FileType c,objc,cpp set noexpandtab
 au FileType c,objc,cpp set commentstring=//%s
-au FileType c,objc,cpp nmap [p ?^#pragma mark -<CR>
-au FileType c,objc,cpp nmap ]p /^#pragma mark -<CR>
+au FileType c,objc,cpp nmap [l ?^#pragma mark -<CR>
+au FileType c,objc,cpp nmap ]l /^#pragma mark -<CR>
 
 " Python
 au FileType python set expandtab
