@@ -97,8 +97,6 @@ else
 endif
 
 nmap <A-D-Up> :A<CR>
-nmap ,. :bnext<CR>
-nmap ,m :bprev<CR>
 nmap <leader>n :NERDTree<CR>
 nmap <leader>o :Unite outline<CR>
 nmap <leader>uo :Unite file<CR>
