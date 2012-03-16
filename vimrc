@@ -46,6 +46,8 @@ set noeol binary "do not leave an empty line at the end of file"
 set wildmenu
 set laststatus=2
 set encoding=utf-8
+"do not reindent hashmark lines
+inoremap # X#
 
 " Suppress warnings
 set hidden
