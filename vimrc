@@ -201,6 +201,9 @@ au FileType xml,html,php let b:delimitMate_matchpairs = "(:),[:],{:}"
 au BufRead,BufNewFile *.clay set filetype=clay
 au FileType clay set cindent
 
+" newLISP
+au BufRead,BufNewFile *.lsp set filetype=newlisp
+
 function! FoldPageFeed()
 	setl foldmethod=expr
 	setl foldexpr=getline(v:lnum)[0]==\"\\<c-l>\"
