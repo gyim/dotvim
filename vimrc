@@ -99,8 +99,6 @@ else
 endif
 
 nmap <A-D-Up> :A<CR>
-nmap ,. :bnext<CR>
-nmap ,m :bprev<CR>
 nmap <leader>n :NERDTree<CR>
 nmap <leader>o :Unite outline<CR>
 nmap <leader>uo :Unite file<CR>
@@ -204,6 +202,9 @@ au FileType xml,html,php let b:delimitMate_matchpairs = "(:),[:],{:}"
 " Clay
 au BufRead,BufNewFile *.clay set filetype=clay
 au FileType clay set cindent
+
+" newLISP
+au BufRead,BufNewFile *.lsp set filetype=newlisp
 
 function! FoldPageFeed()
 	setl foldmethod=expr
