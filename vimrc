@@ -204,7 +204,7 @@ au BufRead,BufNewFile *.clay set filetype=clay
 au FileType clay set cindent
 
 " newLISP
-au BufRead,BufNewFile *.lsp set filetype=newlisp
+au BufRead,BufNewFile *.lsp set filetype=newlisp autoindent lisp expandtab
 
 function! FoldPageFeed()
 	setl foldmethod=expr
