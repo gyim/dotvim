@@ -46,6 +46,8 @@ set noeol binary "do not leave an empty line at the end of file"
 set wildmenu
 set laststatus=2
 set encoding=utf-8
+"do not reindent hashmark lines
+inoremap # X#
 
 " Suppress warnings
 set hidden
@@ -202,7 +204,7 @@ au BufRead,BufNewFile *.clay set filetype=clay
 au FileType clay set cindent
 
 " newLISP
-au BufRead,BufNewFile *.lsp set filetype=newlisp
+au BufRead,BufNewFile *.lsp set filetype=newlisp autoindent lisp expandtab
 
 function! FoldPageFeed()
 	setl foldmethod=expr
