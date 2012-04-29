@@ -18,6 +18,7 @@ Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-rails'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
