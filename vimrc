@@ -14,11 +14,12 @@ Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-rails'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
