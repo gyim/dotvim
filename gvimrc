@@ -9,5 +9,11 @@ macmenu File.Open\.\.\. key=<nop>
 macmenu File.Print key=<nop>
 macmenu Tools.Spelling.Suggest\ Corrections key=<nop>
 
+set guioptions=egmt
+if has('gui')
+	set cursorline number
+	highlight Cursor guifg=white guibg=steelblue
+endif
+
 endif
 

@@ -55,13 +55,6 @@ set hidden
 let g:LustyExplorerSuppressRubyWarning = 1
 set visualbell
 
-" GUI settings
-set guioptions=egmt
-if has('gui')
-	set cursorline number
-	highlight Cursor guifg=white guibg=steelblue
-endif
-
 """"""""""""""""""""""""""""""""""""""""
 " Editing
 """"""""""""""""""""""""""""""""""""""""
