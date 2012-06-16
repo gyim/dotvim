@@ -29,6 +29,7 @@ Bundle 'kana/vim-smartinput'
 Bundle 'mileszs/ack.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
+Bundle 'godlygeek/tabular'
 
 " vim-scripts.org
 Bundle 'a.vim'
@@ -48,6 +49,7 @@ set noeol binary "do not leave an empty line at the end of file"
 set wildmenu
 set laststatus=2
 set encoding=utf-8
+set previewheight=20
 "do not reindent hashmark lines
 inoremap # X#
 
