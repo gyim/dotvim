@@ -194,6 +194,7 @@ au FileType ruby imap <D-S-CR> <Esc>oend<Esc>O
 " HTML
 au FileType xml,html,php set smartindent
 au FileType xml,html,php let b:delimitMate_matchpairs = "(:),[:],{:}"
+au BufRead,BufNewFile *.tpl set filetype=html
 
 " Clay
 au BufRead,BufNewFile *.clay set filetype=clay
