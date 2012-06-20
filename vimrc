@@ -29,6 +29,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
+Bundle 'godlygeek/tabular'
 
 " vim-scripts.org
 Bundle 'a.vim'
