@@ -30,6 +30,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'godlygeek/tabular'
+Bundle 'gregsexton/gitv'
 
 " vim-scripts.org
 Bundle 'a.vim'
