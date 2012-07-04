@@ -11,7 +11,7 @@ macmenu Tools.Spelling.Suggest\ Corrections key=<nop>
 
 set guioptions=egmt
 if has('gui')
-	set cursorline number
+	set cursorline relativenumber
 	highlight Cursor guifg=white guibg=steelblue
 endif
 
