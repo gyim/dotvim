@@ -74,10 +74,11 @@ set tags=./tags;$HOME
 """"""""""""""""""""""""""""""""""""""""
 syntax on
 let moria_style = 'black'
-colorscheme moria
+colorscheme tomorrow_night_bright
 set guifont=Monaco:h12
 let g:Powerline_symbols = 'compatible'
 set noantialias
+set relativenumber
 
 " good colorschemes: moria wombat slate desert pyte mayansmoke
 
