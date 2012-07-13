@@ -103,6 +103,7 @@ nmap <leader>n :NERDTree<CR>
 nmap <leader>o :Unite outline<CR>
 nmap <leader>uo :Unite file<CR>
 nmap <leader>ui :Unite buffer<CR>
+nmap <leader>L :set relativenumber!<CR>
 
 " Switch between buffers
 nmap <leader>h <C-w>h
