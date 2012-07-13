@@ -79,6 +79,7 @@ set guifont=Monaco:h12
 let g:Powerline_symbols = 'compatible'
 set noantialias
 set relativenumber
+set mouse=a
 
 " good colorschemes: moria wombat slate desert pyte mayansmoke
 
