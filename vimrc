@@ -20,6 +20,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-unimpaired'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
@@ -80,14 +81,23 @@ let g:Powerline_symbols = 'compatible'
 set noantialias
 set relativenumber
 set mouse=a
+set colorcolumn=80
 
-" good colorschemes: moria wombat slate desert pyte mayansmoke
+" good colorschemes: tomorrow_night_bright moria wombat slate desert pyte mayansmoke
 
 let g:NERDTreeDirArrows=0
 
 """"""""""""""""""""""""""""""""""""""""
 " Key mappings
 """"""""""""""""""""""""""""""""""""""""
+
+function ToggleCopyMode()
+	if &colorcolumn > 0
+		set colorcolumn=0 norelativenumber
+	else
+		set colorcolumn=80 relativenumber
+	endif
+endfunction
 
 " Commands
 if has('ruby')
@@ -103,7 +113,7 @@ nmap <leader>n :NERDTree<CR>
 nmap <leader>o :Unite outline<CR>
 nmap <leader>uo :Unite file<CR>
 nmap <leader>ui :Unite buffer<CR>
-nmap <leader>L :set relativenumber!<CR>
+nmap <leader>L :call ToggleCopyMode()<CR>
 
 " Switch between buffers
 nmap <leader>h <C-w>h
@@ -143,6 +153,10 @@ imap <C-l> <Esc>A
 nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gd :Gdiff<cr>
 nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
+
+" Unimpaired for tabs
+nmap [p :tabprev<CR>
+nmap ]p :tabnext<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 " Commands
