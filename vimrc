@@ -32,6 +32,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
+Bundle 'vimoutliner/vimoutliner'
 
 " vim-scripts.org
 Bundle 'a.vim'
@@ -76,6 +77,7 @@ set tags=./tags;$HOME
 syntax on
 let moria_style = 'black'
 colorscheme tomorrow_night_bright
+colorscheme vo_dark
 set guifont=Monaco:h12
 let g:Powerline_symbols = 'compatible'
 set noantialias
@@ -222,9 +224,6 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.clay set filetype=clay
 au FileType clay set cindent
 
-" newLISP
-au BufRead,BufNewFile *.lsp set filetype=newlisp autoindent lisp expandtab
-
 function! FoldPageFeed()
 	setl foldmethod=expr
 	setl foldexpr=getline(v:lnum)[0]==\"\\<c-l>\"
@@ -235,6 +234,12 @@ function! FoldPageFeed()
 endfunction
 
 au FileType clay call FoldPageFeed()
+
+" newLISP
+au BufRead,BufNewFile *.lsp set filetype=newlisp autoindent lisp expandtab
+
+" LLVM
+au BufRead,BufNewFile *.ll set filetype=llvm smartindent
 
 """"""""""""""""""""""""""""""""""""""""
 " Other
