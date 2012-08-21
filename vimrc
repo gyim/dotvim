@@ -77,6 +77,7 @@ set tags=./tags;$HOME
 syntax on
 let moria_style = 'black'
 colorscheme tomorrow_night_bright
+colorscheme vo_dark
 set guifont=Monaco:h12
 let g:Powerline_symbols = 'compatible'
 set noantialias
