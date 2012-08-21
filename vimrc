@@ -31,6 +31,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
+Bundle 'vimoutliner/vimoutliner'
 
 " vim-scripts.org
 Bundle 'a.vim'
@@ -205,9 +206,6 @@ au BufRead,BufNewFile *.tpl set filetype=html
 au BufRead,BufNewFile *.clay set filetype=clay
 au FileType clay set cindent
 
-" newLISP
-au BufRead,BufNewFile *.lsp set filetype=newlisp autoindent lisp expandtab
-
 function! FoldPageFeed()
 	setl foldmethod=expr
 	setl foldexpr=getline(v:lnum)[0]==\"\\<c-l>\"
@@ -218,6 +216,12 @@ function! FoldPageFeed()
 endfunction
 
 au FileType clay call FoldPageFeed()
+
+" newLISP
+au BufRead,BufNewFile *.lsp set filetype=newlisp autoindent lisp expandtab
+
+" LLVM
+au BufRead,BufNewFile *.ll set filetype=llvm smartindent
 
 """"""""""""""""""""""""""""""""""""""""
 " Other
