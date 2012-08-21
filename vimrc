@@ -215,6 +215,9 @@ au FileType xml,html,php set smartindent
 au FileType xml,html,php let b:delimitMate_matchpairs = "(:),[:],{:}"
 au BufRead,BufNewFile *.tpl set filetype=html
 
+" Markdown
+au BufRead,BufNewFile *.md set filetype=markdown
+
 " Clay
 au BufRead,BufNewFile *.clay set filetype=clay
 au FileType clay set cindent
