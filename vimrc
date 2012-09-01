@@ -36,6 +36,8 @@ Bundle 'vimoutliner/vimoutliner'
 
 " vim-scripts.org
 Bundle 'a.vim'
+Bundle 'taglist.vim'
+Bundle 'JavaBrowser'
 
 " Colorschemes
 Bundle 'Wombat'
