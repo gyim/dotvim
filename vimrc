@@ -33,6 +33,7 @@ Bundle 'h1mesuke/unite-outline'
 Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
 Bundle 'vimoutliner/vimoutliner'
+Bundle 'wlangstroth/vim-racket'
 
 " vim-scripts.org
 Bundle 'a.vim'
