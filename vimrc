@@ -192,7 +192,7 @@ function! FoldPragma()
 	setl foldminlines=0
 	setl foldtext='----'
 	setl foldlevel=0
-	set foldclose=all
+	"set foldclose=all
 endfunction
 au FileType c,objc,cpp call FoldPragma()
 au FileType c,objc,cpp set noexpandtab
