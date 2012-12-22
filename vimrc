@@ -21,6 +21,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-foreplay'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
@@ -38,6 +39,8 @@ Bundle "dag/vim2hs"
 Bundle "eagletmt/ghcmod-vim"
 Bundle "Shougo/vimproc"
 Bundle "ujihisa/neco-ghc"
+Bundle 'guns/vim-clojure-static'
+Bundle 'kien/rainbow_parentheses.vim'
 
 " vim-scripts.org
 Bundle 'a.vim'
@@ -59,7 +62,8 @@ set noeol binary "do not leave an empty line at the end of file"
 set wildmenu
 set laststatus=2
 set encoding=utf-8
-set previewheight=20
+set previewheight=15
+set incsearch
 "do not reindent hashmark lines
 inoremap # X#
 
@@ -123,6 +127,7 @@ nmap <leader>o :Unite outline<CR>
 nmap <leader>uo :Unite file<CR>
 nmap <leader>ui :Unite buffer<CR>
 nmap <leader>L :call ToggleCopyMode()<CR>
+nmap <leader>U :execute "Ack '" . expand("<cword>") . "'" <CR>
 
 " Switch between buffers
 nmap <leader>h <C-w>h
@@ -167,6 +172,9 @@ nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
 nmap [p :tabprev<CR>
 nmap ]p :tabnext<CR>
 
+" Fold helpers
+nmap <Space> za
+
 """"""""""""""""""""""""""""""""""""""""
 " Commands
 """"""""""""""""""""""""""""""""""""""""
@@ -177,11 +185,38 @@ command! SA SessionSaveAs
 command! SC SessionClose
 
 """"""""""""""""""""""""""""""""""""""""
+" Fold settings
+""""""""""""""""""""""""""""""""""""""""
+set foldmethod=syntax
+
+fu! CustomFoldText()
+	"get first non-blank line
+	let fs = v:foldstart
+	while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+	endwhile
+	if fs > v:foldend
+		let line = getline(v:foldstart)
+	else
+		let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+	endif
+
+	let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+	let foldSize = 1 + v:foldend - v:foldstart
+	let foldSizeStr = " [" . foldSize . " lines] "
+	let foldLevelStr = repeat("+--", v:foldlevel)
+	let lineCount = line("$")
+	let expansionString = repeat(" ", w - strwidth(foldSizeStr.line.foldLevelStr))
+	return line . expansionString . foldSizeStr . foldLevelStr
+endf
+
+set foldtext=CustomFoldText()
+
+""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
 """"""""""""""""""""""""""""""""""""""""
 " Ctrl-P
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|build/.*$\|doc/.*$'
 
 " Fugitive
 autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -197,13 +232,14 @@ function! FoldPragma()
 	setl foldminlines=0
 	setl foldtext='----'
 	setl foldlevel=0
-	set foldclose=all
+	"set foldclose=all
 endfunction
-au FileType c,objc,cpp call FoldPragma()
+"au FileType c,objc,cpp call FoldPragma()
 au FileType c,objc,cpp set noexpandtab
 au FileType c,objc,cpp set commentstring=//%s
-au FileType c,objc,cpp nmap [l ?^#pragma mark -<CR>
-au FileType c,objc,cpp nmap ]l /^#pragma mark -<CR>
+au FileType c,objc,cpp set foldnestmax=1
+"au FileType c,objc,cpp nmap [l ?^#pragma mark -<CR>
+"au FileType c,objc,cpp nmap ]l /^#pragma mark -<CR>
 
 " Python
 au FileType python set expandtab
@@ -219,13 +255,20 @@ au FileType ruby imap <C-S-CR> <Esc>oend<Esc>O
 au FileType ruby imap <D-CR> <Esc>o
 au FileType ruby imap <D-S-CR> <Esc>oend<Esc>O
 
-" HTML
+" HTML / PHP
 au FileType xml,html,php set smartindent
 au FileType xml,html,php let b:delimitMate_matchpairs = "(:),[:],{:}"
 au BufRead,BufNewFile *.tpl set filetype=html
+au FileType php set foldlevel=1
+au FileType php setl keywordprg=pman
+let php_folding = 1
+let php_sql_query = 1
 
 " Markdown
 au BufRead,BufNewFile *.md set filetype=markdown
+
+" Vimoutliner
+au FileType vo_base set foldlevel=1
 
 " Clay
 au BufRead,BufNewFile *.clay set filetype=clay
