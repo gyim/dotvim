@@ -21,6 +21,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-foreplay'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
@@ -34,6 +35,8 @@ Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
 Bundle 'vimoutliner/vimoutliner'
 Bundle 'wlangstroth/vim-racket'
+Bundle 'guns/vim-clojure-static'
+Bundle 'kien/rainbow_parentheses.vim'
 
 " vim-scripts.org
 Bundle 'a.vim'
