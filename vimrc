@@ -34,6 +34,10 @@ Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
 Bundle 'vimoutliner/vimoutliner'
 Bundle 'wlangstroth/vim-racket'
+Bundle "dag/vim2hs"
+Bundle "eagletmt/ghcmod-vim"
+Bundle "Shougo/vimproc"
+Bundle "ujihisa/neco-ghc"
 
 " vim-scripts.org
 Bundle 'a.vim'
@@ -226,6 +230,11 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " Clay
 au BufRead,BufNewFile *.clay set filetype=clay
 au FileType clay set cindent
+
+" Haskell
+au BufEnter *.hs compiler hlint
+au FileType haskell set expandtab sw=4 ts=4 sts=4
+au FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 function! FoldPageFeed()
 	setl foldmethod=expr
