@@ -91,6 +91,12 @@ set smarttab
 let delimitMate_expand_cr = 1
 set tags=./tags;$HOME
 
+" Operator mappings
+onoremap p i(
+onoremap q i(
+onoremap P :<c-u>normal! f(vi(<cr>
+onoremap Q :<c-u>normal! f"vi"<cr>
+
 """"""""""""""""""""""""""""""""""""""""
 " GUI settings
 """"""""""""""""""""""""""""""""""""""""
@@ -107,7 +113,7 @@ let g:NERDTreeDirArrows=0
 
 " good colorschemes: tomorrow_night_bright moria wombat slate desert pyte mayansmoke
 if !exists('g:loaded_colorschemes')
-	let g:loaded_colorschemes=1
+	let s:loaded_colorschemes=1
 	colorscheme tomorrow_night_bright
 	colorscheme vo_dark
 endif
@@ -142,6 +148,13 @@ nmap <leader>L :call ToggleCopyMode()<CR>
 nmap <leader>U :execute "Ack '" . expand("<cword>") . "'" <CR>
 nmap <leader>ev :vsplit $MYVIMRC<cr>
 nmap <leader>sv :source $MYVIMRC<cr>
+
+" Clipboard
+nmap <leader>c "+y
+vmap <leader>c "+y
+nmap <leader>v "+p
+nmap <leader>p "+p
+nmap <leader>P "+P
 
 " Switch between buffers
 nmap <leader>h <C-w>h
