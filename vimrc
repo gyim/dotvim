@@ -21,7 +21,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-foreplay'
+" Bundle 'tpope/vim-foreplay'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
@@ -41,11 +41,14 @@ Bundle "Shougo/vimproc"
 Bundle "ujihisa/neco-ghc"
 Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'golangtw/gocode.vim'
 
 " vim-scripts.org
 Bundle 'a.vim'
 Bundle 'taglist.vim'
 Bundle 'JavaBrowser'
+Bundle 'sudo.vim'
 
 " Colorschemes
 Bundle 'Wombat'
