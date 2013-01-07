@@ -67,8 +67,14 @@ set laststatus=2
 set encoding=utf-8
 set previewheight=15
 set incsearch
+set ignorecase
+set smartcase
+set sidescrolloff=5
+set display+=lastline
+set fileformats=unix,dos,mac
 "do not reindent hashmark lines
 inoremap # X#
+inoremap <C-k> <Esc>
 
 " Suppress warnings
 set hidden
@@ -81,7 +87,7 @@ set visualbell
 set sw=4 ts=4 softtabstop=4
 set nowrap
 set backspace=indent,eol,start
-set ignorecase
+set smarttab
 let delimitMate_expand_cr = 1
 set tags=./tags;$HOME
 
@@ -90,8 +96,6 @@ set tags=./tags;$HOME
 """"""""""""""""""""""""""""""""""""""""
 syntax on
 let moria_style = 'black'
-colorscheme tomorrow_night_bright
-colorscheme vo_dark
 set guifont=Monaco:h12
 let g:Powerline_symbols = 'compatible'
 set noantialias
@@ -99,21 +103,26 @@ set relativenumber
 set mouse=a
 set colorcolumn=80
 
-" good colorschemes: tomorrow_night_bright moria wombat slate desert pyte mayansmoke
-
 let g:NERDTreeDirArrows=0
+
+" good colorschemes: tomorrow_night_bright moria wombat slate desert pyte mayansmoke
+if !exists('g:loaded_colorschemes')
+	let g:loaded_colorschemes=1
+	colorscheme tomorrow_night_bright
+	colorscheme vo_dark
+endif
 
 """"""""""""""""""""""""""""""""""""""""
 " Key mappings
 """"""""""""""""""""""""""""""""""""""""
 
-function ToggleCopyMode()
+fu! ToggleCopyMode()
 	if &colorcolumn > 0
 		set colorcolumn=0 norelativenumber
 	else
 		set colorcolumn=80 relativenumber
 	endif
-endfunction
+endf
 
 " Commands
 if has('ruby')
@@ -131,6 +140,8 @@ nmap <leader>uo :Unite file<CR>
 nmap <leader>ui :Unite buffer<CR>
 nmap <leader>L :call ToggleCopyMode()<CR>
 nmap <leader>U :execute "Ack '" . expand("<cword>") . "'" <CR>
+nmap <leader>ev :vsplit $MYVIMRC<cr>
+nmap <leader>sv :source $MYVIMRC<cr>
 
 " Switch between buffers
 nmap <leader>h <C-w>h
@@ -141,10 +152,6 @@ nmap <leader>i :only<CR>
 
 " Buffer management
 nmap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
-
-" Command-mode navigation
-nmap <C-k> 5k
-nmap <C-j> 5j
 
 " Better indent
 nmap <D-[> <<
