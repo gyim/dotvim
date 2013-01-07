@@ -175,6 +175,13 @@ nmap ]p :tabnext<CR>
 " Fold helpers
 nmap <Space> za
 
+" Jira
+nmap ,j :call JiraBrowseTicket()<cr>
+fu! JiraBrowseTicket()
+	let ticket = expand("<cword>")
+	call system("open http://jira.ustream-adm.in/browse/" . ticket)
+endf
+
 """"""""""""""""""""""""""""""""""""""""
 " Commands
 """"""""""""""""""""""""""""""""""""""""
