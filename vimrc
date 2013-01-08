@@ -43,6 +43,7 @@ Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'golangtw/gocode.vim'
+Bundle 'kana/vim-vspec'
 
 " vim-scripts.org
 Bundle 'a.vim'
