@@ -49,6 +49,7 @@ Bundle 'a.vim'
 Bundle 'taglist.vim'
 Bundle 'JavaBrowser'
 Bundle 'sudo.vim'
+Bundle 'paredit.vim'
 
 " Colorschemes
 Bundle 'Wombat'
@@ -322,6 +323,9 @@ au FileType clay call FoldPageFeed()
 
 " newLISP
 au BufRead,BufNewFile *.lsp set filetype=newlisp autoindent lisp expandtab
+
+" Clojure
+let g:paredit_electric_return=0
 
 " LLVM
 au BufRead,BufNewFile *.ll set filetype=llvm smartindent
