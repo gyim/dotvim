@@ -44,6 +44,7 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'golangtw/gocode.vim'
 Bundle 'kana/vim-vspec'
+Bundle 'mattn/zencoding-vim'
 
 " vim-scripts.org
 Bundle 'a.vim'
