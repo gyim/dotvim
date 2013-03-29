@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 " Bundles
 """"""""""""""""""""""""""""""""""""""""
 
+Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-haml'
@@ -19,79 +20,45 @@ Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-unimpaired'
-" Bundle 'tpope/vim-foreplay'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
 Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-powerline'
-"Bundle 'kana/vim-smartinput'
 Bundle 'mileszs/ack.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'h1mesuke/unite-outline'
-Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
 Bundle 'vimoutliner/vimoutliner'
 Bundle 'wlangstroth/vim-racket'
-Bundle "dag/vim2hs"
-Bundle "eagletmt/ghcmod-vim"
-Bundle "Shougo/vimproc"
-Bundle "ujihisa/neco-ghc"
 Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'golangtw/gocode.vim'
-Bundle 'kana/vim-vspec'
 Bundle 'mattn/zencoding-vim'
 
 " vim-scripts.org
 Bundle 'a.vim'
-Bundle 'taglist.vim'
-Bundle 'JavaBrowser'
-Bundle 'sudo.vim'
 Bundle 'paredit.vim'
-
-" Colorschemes
-Bundle 'Wombat'
-Bundle 'moria'
 
 """"""""""""""""""""""""""""""""""""""""
 " General settings
 """"""""""""""""""""""""""""""""""""""""
 filetype plugin indent on
 set wildignore=*.o,*.a,*.swp,*.egg-info,*.pyc,*.class,Session.vim
+let delimitMate_expand_cr = 1
 set noswapfile nobackup
-set autoread
 set noeol binary "do not leave an empty line at the end of file"
-set wildmenu
-set laststatus=2
 set encoding=utf-8
 set previewheight=15
-set incsearch
-set ignorecase
-set smartcase
-set sidescrolloff=5
-set display+=lastline
+set ignorecase smartcase
 set fileformats=unix,dos,mac
-"do not reindent hashmark lines
-inoremap # X#
-inoremap <C-k> <Esc>
-
-" Suppress warnings
-set hidden
+set hidden visualbell
 let g:LustyExplorerSuppressRubyWarning = 1
-set visualbell
 
 """"""""""""""""""""""""""""""""""""""""
 " Editing
 """"""""""""""""""""""""""""""""""""""""
-set sw=4 ts=4 softtabstop=4
+set sw=4 ts=4 sts=4
 set nowrap
-set backspace=indent,eol,start
-set smarttab
-let delimitMate_expand_cr = 1
 set tags=./tags;$HOME
 
 " Operator mappings
@@ -104,15 +71,11 @@ onoremap Q :<c-u>normal! f"vi"<cr>
 " GUI settings
 """"""""""""""""""""""""""""""""""""""""
 syntax on
-let moria_style = 'black'
 set guifont=Monaco:h12
-let g:Powerline_symbols = 'compatible'
 set noantialias
 set relativenumber
 set mouse=a
 set colorcolumn=80
-
-let g:NERDTreeDirArrows=0
 
 " good colorschemes: tomorrow_night_bright moria wombat slate desert pyte mayansmoke
 if !exists('g:loaded_colorschemes')
@@ -120,6 +83,8 @@ if !exists('g:loaded_colorschemes')
 	colorscheme tomorrow_night_bright
 	colorscheme vo_dark
 endif
+
+hi StatusLine ctermfg=black guifg=black
 
 """"""""""""""""""""""""""""""""""""""""
 " Key mappings
@@ -135,71 +100,30 @@ endf
 
 " Commands
 if has('ruby')
-	nmap <C-l> :LustyBufferExplorer<CR>
-	nmap <leader>O :LustyFilesystemExplorer<CR>
-else
-	nmap <C-l> :Unite buffer<CR>
-	nmap <leader>O :Unite file<CR>
+	nnoremap <C-l> :LustyBufferExplorer<CR>
+	nnoremap <leader>O :LustyFilesystemExplorer<CR>
 endif
 
-nmap <A-D-Up> :A<CR>
-nmap <leader>n :NERDTree<CR>
-nmap <leader>o :Unite outline<CR>
-nmap <leader>uo :Unite file<CR>
-nmap <leader>ui :Unite buffer<CR>
-nmap <leader>L :call ToggleCopyMode()<CR>
-nmap <leader>U :execute "Ack '" . expand("<cword>") . "'" <CR>
-nmap <leader>ev :vsplit $MYVIMRC<cr>
-nmap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>L :call ToggleCopyMode()<CR>
+nnoremap <leader>U :execute "Ack '" . expand("<cword>") . "'" <CR>
 
 " Clipboard
-nmap <leader>c "+y
-vmap <leader>c "+y
-nmap <leader>v "+p
-nmap <leader>p "+p
-nmap <leader>P "+P
-
-" Switch between buffers
-nmap <leader>h <C-w>h
-nmap <leader>j <C-w>j
-nmap <leader>k <C-w>k
-nmap <leader>l <C-w>l
-nmap <leader>i :only<CR>
+nnoremap <leader>c "+y
+nnoremap <leader>c "+y
+nnoremap <leader>v "+p
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 
 " Buffer management
-nmap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
-
-" Better indent
-nmap <D-[> <<
-nmap <D-]> >>
-vnoremap < <gv
-vnoremap > >gv
-vmap <D-[> <gv
-vmap <D-]> >gv
-imap <D-[> <ESC><<
-imap <D-]> <ESC>>>
-
-" Better newline
-imap <M-CR> <Esc>o
-imap <C-CR> <Esc>A;<CR>
-imap <C-S-CR> <Esc>A {<CR>
-imap <D-CR> <Esc>A;<CR>
-imap <D-S-CR> <Esc>A {<CR>
-
-" Insert mode navigation
-imap <C-l> <Esc>A
+nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " Git commands
 nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gd :Gdiff<cr>
 nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
 
-" Unimpaired for tabs
-nmap [p :tabprev<CR>
-nmap ]p :tabnext<CR>
-
 " Fold helpers
-nmap <Space> za
+nnoremap <Space> za
 
 " Jira
 nmap <leader>j :call JiraBrowseTicket()<cr>
@@ -209,18 +133,9 @@ fu! JiraBrowseTicket()
 endf
 
 """"""""""""""""""""""""""""""""""""""""
-" Commands
-""""""""""""""""""""""""""""""""""""""""
-command! -nargs=1 SO SessionOpen <args>
-command! SS SessionSave
-command! SL SessionList
-command! SA SessionSaveAs
-command! SC SessionClose
-
-""""""""""""""""""""""""""""""""""""""""
 " Fold settings
 """"""""""""""""""""""""""""""""""""""""
-set foldmethod=syntax
+set foldmethod=syntax foldnestmax=1 nofoldenable
 
 fu! CustomFoldText()
 	"get first non-blank line
@@ -258,79 +173,31 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " Language-specific settings
 """"""""""""""""""""""""""""""""""""""""
 
-" C / Objective-C
-function! FoldPragma()
-	setl foldmethod=expr
-	setl foldexpr=getline(v:lnum)=~'^\s*#pragma\ mark\ -'
-	setl foldminlines=0
-	setl foldtext='----'
-	setl foldlevel=0
-	"set foldclose=all
-endfunction
-"au FileType c,objc,cpp call FoldPragma()
-au FileType c,objc,cpp set noexpandtab
-au FileType c,objc,cpp set commentstring=//%s
-au FileType c,objc,cpp set foldnestmax=1
-"au FileType c,objc,cpp nmap [l ?^#pragma mark -<CR>
-"au FileType c,objc,cpp nmap ]l /^#pragma mark -<CR>
+" C/C++/Objective 
+au FileType c,objc,cpp setl noexpandtab
+au FileType c,objc,cpp setl commentstring=//%s
 
 " Python
-au FileType python set expandtab
-au FileType python imap <C-CR> <Esc>o
-au FileType python imap <C-S-CR> <Esc>A:<CR>
-au FileType python imap <D-CR> <Esc>o
-au FileType python imap <D-S-CR> <Esc>A:<CR>
+au FileType python setl expandtab
 
 " Ruby
-au FileType ruby set expandtab sw=2 ts=2 softtabstop=2
-au FileType ruby imap <C-CR> <Esc>o
-au FileType ruby imap <C-S-CR> <Esc>oend<Esc>O
-au FileType ruby imap <D-CR> <Esc>o
-au FileType ruby imap <D-S-CR> <Esc>oend<Esc>O
+au FileType ruby setl expandtab sw=2 ts=2 sts=2
 
 " HTML / PHP
-au FileType xml,html,php set smartindent
-au FileType xml,html,php let b:delimitMate_matchpairs = "(:),[:],{:}"
-au BufRead,BufNewFile *.tpl set filetype=html
-au FileType php set foldlevel=1
+au FileType xml,html,php setl smartindent nocindent
 au FileType php setl keywordprg=pman
-let php_folding = 1
-let php_sql_query = 1
 
 " Markdown
-au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile *.md setl filetype=markdown
 
 " Vimoutliner
-au FileType vo_base set foldlevel=1
-
-" Clay
-au BufRead,BufNewFile *.clay set filetype=clay
-au FileType clay set cindent
-
-" Haskell
-au BufEnter *.hs compiler hlint
-au FileType haskell set expandtab sw=4 ts=4 sts=4
-au FileType haskell setlocal omnifunc=necoghc#omnifunc
-
-function! FoldPageFeed()
-	setl foldmethod=expr
-	setl foldexpr=getline(v:lnum)[0]==\"\\<c-l>\"
-	setl foldminlines=0
-	setl foldtext='---\ new\ page\ '
-	setl foldlevel=0
-	set foldclose=all
-endfunction
-
-au FileType clay call FoldPageFeed()
-
-" newLISP
-au BufRead,BufNewFile *.lsp set filetype=newlisp autoindent lisp expandtab
+au FileType vo_base setl foldlevel=1 foldnestmax=5 foldenable
 
 " Clojure
 let g:paredit_electric_return=0
 
 " LLVM
-au BufRead,BufNewFile *.ll set filetype=llvm smartindent
+au BufRead,BufNewFile *.ll setl filetype=llvm smartindent
 
 """"""""""""""""""""""""""""""""""""""""
 " Other
