@@ -84,6 +84,7 @@ if !exists('g:loaded_colorschemes')
 endif
 
 hi StatusLine ctermfg=black guifg=black
+hi StatusLineNC ctermfg=black guifg=black
 
 """"""""""""""""""""""""""""""""""""""""
 " Key mappings
