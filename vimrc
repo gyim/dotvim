@@ -24,7 +24,6 @@ Bundle 'tpope/vim-unimpaired'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
-Bundle 'scrooloose/nerdtree'
 Bundle 'mileszs/ack.vim'
 Bundle 'gregsexton/gitv'
 Bundle 'vimoutliner/vimoutliner'
