@@ -21,6 +21,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-dispatch'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
@@ -116,6 +117,7 @@ nnoremap <leader>P "+P
 
 " Buffer management
 nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <leader>C :cclose<CR> :pclose<CR>
 
 " Git commands
 nnoremap <Leader>gs :Gstatus<cr>
