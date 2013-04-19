@@ -116,8 +116,8 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 
 " Buffer management
-nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
-nnoremap <leader>C :cclose<CR> :pclose<CR>
+nnoremap ZD :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap ZC :cclose<CR> :pclose<CR>
 
 " Git commands
 nnoremap <Leader>gs :Gstatus<cr>
