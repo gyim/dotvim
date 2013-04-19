@@ -52,6 +52,7 @@ set previewheight=15
 set ignorecase smartcase
 set fileformats=unix,dos,mac
 set hidden visualbell
+set linebreak
 let g:LustyExplorerSuppressRubyWarning = 1
 
 """"""""""""""""""""""""""""""""""""""""
@@ -174,6 +175,9 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 """"""""""""""""""""""""""""""""""""""""
 " Language-specific settings
 """"""""""""""""""""""""""""""""""""""""
+
+" Mail
+au FileType mail setl formatoptions+=aw wrap
 
 " C/C++/Objective 
 au FileType c,objc,cpp setl noexpandtab
