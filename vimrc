@@ -22,6 +22,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-speeddating'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
@@ -34,6 +35,8 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'golangtw/gocode.vim'
 Bundle 'mattn/zencoding-vim'
+Bundle '907th/vim-auto-save'
+Bundle 'jceb/vim-orgmode'
 
 " vim-scripts.org
 Bundle 'a.vim'
@@ -53,7 +56,8 @@ set ignorecase smartcase
 set fileformats=unix,dos,mac
 set hidden visualbell
 set linebreak
-let g:LustyExplorerSuppressRubyWarning = 1
+let g:LustyExplorerSuppressRubyWarning=1
+let g:auto_save=1
 
 """"""""""""""""""""""""""""""""""""""""
 " Editing
@@ -111,10 +115,14 @@ nnoremap <leader>U :execute "Ack '" . expand("<cword>") . "'" <CR>
 
 " Clipboard
 nnoremap <leader>c "+y
-nnoremap <leader>c "+y
 nnoremap <leader>v "+p
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
+
+vnoremap <leader>c "+y
+vnoremap <leader>v "+p
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " Buffer management
 nnoremap ZD :bp<bar>sp<bar>bn<bar>bd<CR>
