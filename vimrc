@@ -195,6 +195,7 @@ au FileType python setl expandtab
 
 " Ruby
 au FileType ruby setl expandtab sw=2 ts=2 sts=2
+au BufRead,BufNewFile Vagrantfile set filetype=ruby
 
 " HTML / PHP
 au FileType xml,html,php setl smartindent nocindent
