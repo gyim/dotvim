@@ -27,6 +27,7 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-obsession'
+Bundle 'tpope/vim-fireplace'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
@@ -40,6 +41,7 @@ Bundle 'Blackrush/vim-gocode'
 Bundle 'mattn/zencoding-vim'
 Bundle '907th/vim-auto-save'
 Bundle 'jceb/vim-orgmode'
+Bundle 'kien/rainbow_parentheses.vim'
 
 " vim-scripts.org
 Bundle 'a.vim'
@@ -212,6 +214,11 @@ au BufRead,BufNewFile *.md setl filetype=markdown
 au FileType vo_base setl foldlevel=1 foldnestmax=5 foldenable
 
 " Clojure
+au VimEnter * RainbowParenthesesToggle
+au Syntax clojure RainbowParenthesesLoadRound
+au Syntax clojure RainbowParenthesesLoadSquare
+au Syntax clojure RainbowParenthesesLoadBraces
+au FileType clojure set lispwords+=fact,facts
 let g:paredit_electric_return=0
 
 " LLVM
