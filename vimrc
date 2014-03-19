@@ -28,24 +28,30 @@ Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-vinegar'
+Bundle 'tpope/vim-jdaddy'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
 Bundle 'mileszs/ack.vim'
 Bundle 'gregsexton/gitv'
-Bundle 'vimoutliner/vimoutliner'
 Bundle 'wlangstroth/vim-racket'
 Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'guns/vim-slamhound'
+" another rainbow plugin
+"Bundle 'amdt/vim-niji'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'mattn/zencoding-vim'
 Bundle '907th/vim-auto-save'
-Bundle 'jceb/vim-orgmode'
-Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'tommcdo/vim-exchange'
+Bundle 'jlanzarotta/bufexplorer'
+Bundle 'guns/xterm-color-table.vim'
 
 " vim-scripts.org
 Bundle 'a.vim'
-Bundle 'paredit.vim'
+"Bundle 'paredit.vim'
+Bundle 'spacewalk.vim'
 
 """"""""""""""""""""""""""""""""""""""""
 " General settings
@@ -61,8 +67,9 @@ set ignorecase smartcase
 set fileformats=unix,dos,mac
 set hidden visualbell
 set linebreak
+set hlsearch
 let g:LustyExplorerSuppressRubyWarning=1
-let g:auto_save=1
+let g:auto_save=0
 
 """"""""""""""""""""""""""""""""""""""""
 " Editing
@@ -83,19 +90,20 @@ onoremap Q :<c-u>normal! f"vi"<cr>
 syntax on
 set guifont=Monaco:h12
 set noantialias
+set number
 set relativenumber
 set mouse=a
 set colorcolumn=80
 
 " good colorschemes: tomorrow_night_bright moria wombat slate desert pyte mayansmoke
 if !exists('g:loaded_colorschemes')
-	let s:loaded_colorschemes=1
+	let g:loaded_colorschemes=1
 	colorscheme tomorrow_night_bright
-	colorscheme vo_dark
 endif
 
-hi StatusLine ctermfg=black guifg=black
-hi StatusLineNC ctermfg=black guifg=black
+hi VertSplit ctermbg=235 guibg=black
+hi StatusLine ctermfg=235 guifg=black ctermbg=black guibg=white
+hi StatusLineNC ctermfg=234 guifg=black ctermbg=black guibg=white
 
 """"""""""""""""""""""""""""""""""""""""
 " Key mappings
@@ -117,6 +125,7 @@ endif
 
 nnoremap <leader>L :call ToggleCopyMode()<CR>
 nnoremap <leader>U :execute "Ack '" . expand("<cword>") . "'" <CR>
+nnoremap <silent> <leader>n :noh<CR>
 
 " Clipboard
 nnoremap <leader>c "+y
@@ -130,6 +139,9 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 " Buffer management
+nnoremap [a :prev<CR>:args<CR>
+nnoremap ]a :next<CR>:args<CR>
+nnoremap <leader>d :bd<CR>
 nnoremap ZD :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap ZC :cclose<CR> :pclose<CR>
 
@@ -147,6 +159,9 @@ fu! JiraBrowseTicket()
 	let ticket = expand("<cword>")
 	call system("open http://jira.ustream-adm.in/browse/" . ticket)
 endf
+
+" Clojure
+nnoremap <leader>sl :Slamhound<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 " Fold settings
