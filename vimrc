@@ -29,7 +29,8 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-vinegar'
-Bundle 'tpope/vim-jdaddy'
+Bundle 'tpope/vim-projectionist'
+Bundle 'tpope/vim-leiningen'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
@@ -68,6 +69,8 @@ set fileformats=unix,dos,mac
 set hidden visualbell
 set linebreak
 set hlsearch
+set splitright
+set wildmode=full wildmenu
 let g:LustyExplorerSuppressRubyWarning=1
 let g:auto_save=0
 
@@ -233,7 +236,7 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
-au FileType clojure set lispwords+=fact,facts
+au FileType clojure set lispwords+=fact,facts,into
 let g:paredit_electric_return=0
 
 " LLVM
