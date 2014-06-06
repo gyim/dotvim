@@ -48,6 +48,7 @@ Bundle '907th/vim-auto-save'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'guns/xterm-color-table.vim'
+Bundle 'tfnico/vim-gradle'
 
 " vim-scripts.org
 Bundle 'a.vim'
