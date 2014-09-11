@@ -37,23 +37,24 @@ Bundle 'sjbach/lusty'
 Bundle 'mileszs/ack.vim'
 Bundle 'gregsexton/gitv'
 Bundle 'wlangstroth/vim-racket'
-Bundle 'guns/vim-clojure-static'
+Bundle 'guns/vim-sexp'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'guns/vim-slamhound'
 " another rainbow plugin
 "Bundle 'amdt/vim-niji'
 Bundle 'Blackrush/vim-gocode'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle '907th/vim-auto-save'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'guns/xterm-color-table.vim'
 Bundle 'tfnico/vim-gradle'
+Bundle 'altercation/vim-colors-solarized'
 
 " vim-scripts.org
 Bundle 'a.vim'
 "Bundle 'paredit.vim'
-Bundle 'spacewalk.vim'
+"Bundle 'spacewalk.vim'
 
 """"""""""""""""""""""""""""""""""""""""
 " General settings
@@ -99,15 +100,34 @@ set relativenumber
 set mouse=a
 set colorcolumn=80
 
-" good colorschemes: tomorrow_night_bright moria wombat slate desert pyte mayansmoke
+" good colorschemes: tomorrow_night_bright solarized moria wombat slate desert pyte mayansmoke
 if !exists('g:loaded_colorschemes')
 	let g:loaded_colorschemes=1
-	colorscheme tomorrow_night_bright
+	colorscheme solarized
+	set background=dark
 endif
 
-hi VertSplit ctermbg=235 guibg=black
-hi StatusLine ctermfg=235 guifg=black ctermbg=black guibg=white
-hi StatusLineNC ctermfg=234 guifg=black ctermbg=black guibg=white
+" hi VertSplit ctermbg=235 guibg=black
+" hi StatusLine ctermfg=235 guifg=black ctermbg=black guibg=white
+" hi StatusLineNC ctermfg=234 guifg=black ctermbg=black guibg=white
+
+let g:rbpt_colorpairs = [
+	\ ['brown',       'RoyalBlue3'],
+	\ ['Darkblue',    'SeaGreen3'],
+	\ ['darkgray',    'DarkOrchid3'],
+	\ ['darkgreen',   'firebrick3'],
+	\ ['darkcyan',    'RoyalBlue3'],
+	\ ['darkred',     'SeaGreen3'],
+	\ ['darkmagenta', 'DarkOrchid3'],
+	\ ['brown',       'firebrick3'],
+	\ ['gray',        'RoyalBlue3'],
+	\ ['darkmagenta', 'DarkOrchid3'],
+	\ ['Darkblue',    'firebrick3'],
+	\ ['darkgreen',   'RoyalBlue3'],
+	\ ['darkcyan',    'SeaGreen3'],
+	\ ['darkred',     'DarkOrchid3'],
+	\ ['red',         'firebrick3'],
+	\ ]
 
 """"""""""""""""""""""""""""""""""""""""
 " Key mappings
@@ -237,7 +257,7 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
-au FileType clojure set lispwords+=fact,facts,into
+au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,if-let,for,doseq
 let g:paredit_electric_return=0
 
 " LLVM
