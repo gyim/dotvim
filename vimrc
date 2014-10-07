@@ -170,9 +170,9 @@ nnoremap ZD :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap ZC :cclose<CR> :pclose<CR>
 
 " Git commands
-nnoremap <Leader>gs :Gstatus<cr>
-nnoremap <Leader>gd :Gdiff<cr>
-nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
+nnoremap <silent> <Leader>gs :Gstatus<cr>
+nnoremap <silent> <Leader>gd :Gdiff<cr>
+nnoremap <silent> <Leader>gD :diffoff!<cr>:only<cr>
 
 " Fold helpers
 nnoremap <Space> za
