@@ -49,6 +49,7 @@ Bundle 'tommcdo/vim-exchange'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'guns/xterm-color-table.vim'
 Bundle 'tfnico/vim-gradle'
+Bundle 'JuliaLang/julia-vim'
 Bundle 'altercation/vim-colors-solarized'
 
 " vim-scripts.org
@@ -82,6 +83,7 @@ let g:auto_save=0
 set sw=4 ts=4 sts=4
 set nowrap
 set tags=./tags;$HOME
+set diffopt=filler,vertical
 
 " Operator mappings
 onoremap p i(
@@ -104,7 +106,7 @@ set colorcolumn=80
 if !exists('g:loaded_colorschemes')
 	let g:loaded_colorschemes=1
 	colorscheme solarized
-	set background=dark
+	set background=light
 endif
 
 " hi VertSplit ctermbg=235 guibg=black
@@ -187,6 +189,8 @@ endf
 " Clojure
 nnoremap <leader>sl :Slamhound<CR>
 
+command! BE :BufExplorer
+
 """"""""""""""""""""""""""""""""""""""""
 " Fold settings
 """"""""""""""""""""""""""""""""""""""""
@@ -240,7 +244,7 @@ au FileType python setl expandtab
 
 " Ruby
 au FileType ruby setl expandtab sw=2 ts=2 sts=2
-au BufRead,BufNewFile Vagrantfile set filetype=ruby
+au BufRead,BufNewFile Vagrantfile* set filetype=ruby
 
 " HTML / PHP
 au FileType xml,html,php setl smartindent nocindent
@@ -258,7 +262,7 @@ au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
 au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,if-let,for,doseq
-let g:paredit_electric_return=0
+au BufRead,BufNewFile *.pxi set filetype=clojure
 
 " LLVM
 au BufRead,BufNewFile *.ll setl filetype=llvm smartindent
