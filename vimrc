@@ -195,6 +195,9 @@ endf
 
 " Clojure
 nnoremap <leader>sl :Slamhound<CR>
+nnoremap <silent>cpR :w<CR>:Require<CR>
+nnoremap <silent>cpo :w<CR>:Eval<CR>
+let g:leiningen_no_auto_repl=1
 
 command! BE :BufExplorer
 
@@ -271,7 +274,7 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
-au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,if-let,for,doseq
+au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,when-some,if-let,for,doseq,fn,go,go-loop,while,loop,catch,binding,try,reify
 au BufRead,BufNewFile *.pxi set filetype=clojure
 
 " LLVM
