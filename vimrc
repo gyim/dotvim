@@ -105,8 +105,12 @@ set colorcolumn=80
 " good colorschemes: tomorrow_night_bright solarized moria wombat slate desert pyte mayansmoke
 if !exists('g:loaded_colorschemes')
 	let g:loaded_colorschemes=1
-	colorscheme solarized
-	set background=light
+	silent! colorscheme solarized
+	if $COLORFGBG =~ "11;15"
+		set background=light
+	else
+		set background=dark
+	endif
 endif
 
 " hi VertSplit ctermbg=235 guibg=black
