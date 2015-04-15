@@ -51,6 +51,9 @@ Bundle 'guns/xterm-color-table.vim'
 Bundle 'tfnico/vim-gradle'
 Bundle 'JuliaLang/julia-vim'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'wting/rust.vim'
+Bundle 'vim-pandoc/vim-pandoc-syntax'
+"Bundle 'vim-pandoc/vim-pandoc'
 
 " vim-scripts.org
 Bundle 'a.vim'
@@ -256,6 +259,9 @@ au FileType php setl keywordprg=pman
 
 " Markdown
 au BufRead,BufNewFile *.md setl filetype=markdown
+
+" AsciiDoc
+au BufRead,BufNewFile *.adoc setl filetype=asciidoc
 
 " Vimoutliner
 au FileType vo_base setl foldlevel=1 foldnestmax=5 foldenable
