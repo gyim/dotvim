@@ -40,9 +40,7 @@ Bundle 'wlangstroth/vim-racket'
 Bundle 'guns/vim-sexp'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'guns/vim-slamhound'
-" another rainbow plugin
-"Bundle 'amdt/vim-niji'
-Bundle 'Blackrush/vim-gocode'
+Bundle 'fatih/vim-go'
 Bundle 'mattn/emmet-vim'
 Bundle '907th/vim-auto-save'
 Bundle 'tommcdo/vim-exchange'
@@ -53,12 +51,9 @@ Bundle 'JuliaLang/julia-vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'wting/rust.vim'
 Bundle 'vim-pandoc/vim-pandoc-syntax'
-"Bundle 'vim-pandoc/vim-pandoc'
 
 " vim-scripts.org
 Bundle 'a.vim'
-"Bundle 'paredit.vim'
-"Bundle 'spacewalk.vim'
 
 """"""""""""""""""""""""""""""""""""""""
 " General settings
@@ -79,6 +74,7 @@ set splitright
 set wildmode=full wildmenu
 let g:LustyExplorerSuppressRubyWarning=1
 let g:auto_save=0
+let g:netrw_liststyle=3
 
 """"""""""""""""""""""""""""""""""""""""
 " Editing
@@ -86,7 +82,7 @@ let g:auto_save=0
 set sw=4 ts=4 sts=4
 set nowrap
 set tags=./tags;$HOME
-set diffopt=filler,vertical
+set diffopt=filler
 
 " Operator mappings
 onoremap p i(
@@ -107,13 +103,13 @@ set colorcolumn=80
 
 " good colorschemes: tomorrow_night_bright solarized moria wombat slate desert pyte mayansmoke
 if !exists('g:loaded_colorschemes')
-	let g:loaded_colorschemes=1
-	silent! colorscheme solarized
-	if $COLORFGBG =~ "11;15"
-		set background=light
-	else
-		set background=dark
-	endif
+let g:loaded_colorschemes=1
+silent! colorscheme solarized
+if $COLORFGBG =~ "11;15"
+	set background=light
+else
+	set background=dark
+endif
 endif
 
 " hi VertSplit ctermbg=235 guibg=black
@@ -121,43 +117,43 @@ endif
 " hi StatusLineNC ctermfg=234 guifg=black ctermbg=black guibg=white
 
 let g:rbpt_colorpairs = [
-	\ ['brown',       'RoyalBlue3'],
-	\ ['Darkblue',    'SeaGreen3'],
-	\ ['darkgray',    'DarkOrchid3'],
-	\ ['darkgreen',   'firebrick3'],
-	\ ['darkcyan',    'RoyalBlue3'],
-	\ ['darkred',     'SeaGreen3'],
-	\ ['darkmagenta', 'DarkOrchid3'],
-	\ ['brown',       'firebrick3'],
-	\ ['gray',        'RoyalBlue3'],
-	\ ['darkmagenta', 'DarkOrchid3'],
-	\ ['Darkblue',    'firebrick3'],
-	\ ['darkgreen',   'RoyalBlue3'],
-	\ ['darkcyan',    'SeaGreen3'],
-	\ ['darkred',     'DarkOrchid3'],
-	\ ['red',         'firebrick3'],
-	\ ]
+\ ['brown',       'RoyalBlue3'],
+\ ['Darkblue',    'SeaGreen3'],
+\ ['darkgray',    'DarkOrchid3'],
+\ ['darkgreen',   'firebrick3'],
+\ ['darkcyan',    'RoyalBlue3'],
+\ ['darkred',     'SeaGreen3'],
+\ ['darkmagenta', 'DarkOrchid3'],
+\ ['brown',       'firebrick3'],
+\ ['gray',        'RoyalBlue3'],
+\ ['darkmagenta', 'DarkOrchid3'],
+\ ['Darkblue',    'firebrick3'],
+\ ['darkgreen',   'RoyalBlue3'],
+\ ['darkcyan',    'SeaGreen3'],
+\ ['darkred',     'DarkOrchid3'],
+\ ['red',         'firebrick3'],
+\ ]
 
 """"""""""""""""""""""""""""""""""""""""
 " Key mappings
 """"""""""""""""""""""""""""""""""""""""
 
 fu! ToggleCopyMode()
-	if &colorcolumn > 0
-		set colorcolumn=0 norelativenumber
-	else
-		set colorcolumn=80 relativenumber
-	endif
+if &colorcolumn > 0
+	set colorcolumn=0 norelativenumber
+else
+	set colorcolumn=80 relativenumber
+endif
 endf
 
 " Commands
 if has('ruby')
-	nnoremap <C-l> :LustyBufferExplorer<CR>
-	nnoremap <leader>O :LustyFilesystemExplorer<CR>
+nnoremap <C-l> :LustyBufferExplorer<CR>
+nnoremap <leader>O :LustyFilesystemExplorer<CR>
 endif
 
 nnoremap <leader>L :call ToggleCopyMode()<CR>
-nnoremap <leader>U :execute "Ack '" . expand("<cword>") . "'" <CR>
+nnoremap <leader>U :execute "Ggrep '" . expand("<cword>") . "'" <CR>
 nnoremap <silent> <leader>n :noh<CR>
 
 " Clipboard
@@ -189,17 +185,18 @@ nnoremap <Space> za
 " Jira
 nmap <leader>j :call JiraBrowseTicket()<cr>
 fu! JiraBrowseTicket()
-	let ticket = expand("<cword>")
-	call system("open http://jira.ustream-adm.in/browse/" . ticket)
+let ticket = expand("<cword>")
+call system("open http://jira.ustream-adm.in/browse/" . ticket)
 endf
 
 " Clojure
-nnoremap <leader>sl :Slamhound<CR>
+nnoremap <silent><leader>sl :w<CR>:Slamhound<CR>
 nnoremap <silent>cpR :w<CR>:Require<CR>
 nnoremap <silent>cpo :w<CR>:Eval<CR>
 let g:leiningen_no_auto_repl=1
 
 command! BE :BufExplorer
+command! SL :Slamhound
 
 """"""""""""""""""""""""""""""""""""""""
 " Fold settings
@@ -274,7 +271,7 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
-au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,when-some,if-let,for,doseq,fn,go,go-loop,while,loop,catch,binding,try,reify
+au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,when-some,if-let,for,doseq,fn,go,go-loop,while,loop,catch,binding,try,reify,condp,locking,doto
 au BufRead,BufNewFile *.pxi set filetype=clojure
 
 " LLVM
