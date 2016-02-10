@@ -38,12 +38,11 @@ Bundle 'mileszs/ack.vim'
 Bundle 'gregsexton/gitv'
 Bundle 'wlangstroth/vim-racket'
 Bundle 'guns/vim-sexp'
+"Bundle 'bhurlow/vim-parinfer'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'guns/vim-slamhound'
 Bundle 'fatih/vim-go'
 Bundle 'mattn/emmet-vim'
-Bundle '907th/vim-auto-save'
-Bundle 'tommcdo/vim-exchange'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'guns/xterm-color-table.vim'
 Bundle 'tfnico/vim-gradle'
@@ -60,7 +59,6 @@ Bundle 'a.vim'
 """"""""""""""""""""""""""""""""""""""""
 filetype plugin indent on
 set wildignore=*.o,*.a,*.swp,*.egg-info,*.pyc,*.class,Session.vim
-let delimitMate_expand_cr = 1
 set noswapfile nobackup
 set noeol binary "do not leave an empty line at the end of file"
 set encoding=utf-8
@@ -80,7 +78,7 @@ let g:netrw_liststyle=3
 " Editing
 """"""""""""""""""""""""""""""""""""""""
 set sw=4 ts=4 sts=4
-set nowrap
+set nowrap breakindent
 set tags=./tags;$HOME
 set diffopt=filler
 
@@ -177,7 +175,7 @@ nnoremap ZC :cclose<CR> :pclose<CR>
 " Git commands
 nnoremap <silent> <Leader>gs :Gstatus<cr>
 nnoremap <silent> <Leader>gd :Gdiff<cr>
-nnoremap <silent> <Leader>gD :diffoff!<cr>:only<cr>
+"nnoremap <silent> <Leader>gD :diffoff!<cr>:only<cr>
 
 " Fold helpers
 nnoremap <Space> za
@@ -271,7 +269,8 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
-au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,when-some,if-let,for,doseq,fn,go,go-loop,while,loop,catch,binding,try,reify,condp,locking,doto
+au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,when-some,when-not,if-let,for,doseq,fn,go,go-loop,while,loop,catch,binding,try,reify,condp,locking,doto,testing,local-job,extend-protocol
+au FileType clojure set lispwords-=do
 au BufRead,BufNewFile *.pxi set filetype=clojure
 
 " LLVM
