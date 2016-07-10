@@ -31,9 +31,13 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-vinegar'
 Bundle 'tpope/vim-projectionist'
 Bundle 'tpope/vim-leiningen'
+Bundle 'tpope/vim-rsi'
+Bundle 'tpope/vim-rhubarb'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'Shougo/unite.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'gregsexton/gitv'
 Bundle 'wlangstroth/vim-racket'
@@ -43,13 +47,14 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'guns/vim-slamhound'
 Bundle 'fatih/vim-go'
 Bundle 'mattn/emmet-vim'
-Bundle 'jlanzarotta/bufexplorer'
+"Bundle 'jlanzarotta/bufexplorer'
 Bundle 'guns/xterm-color-table.vim'
 Bundle 'tfnico/vim-gradle'
 Bundle 'JuliaLang/julia-vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'wting/rust.vim'
 Bundle 'vim-pandoc/vim-pandoc-syntax'
+Bundle 'shumphrey/fugitive-gitlab.vim'
 
 " vim-scripts.org
 Bundle 'a.vim'
@@ -70,6 +75,7 @@ set linebreak
 set hlsearch
 set splitright
 set wildmode=full wildmenu
+set cryptmethod=blowfish2
 let g:LustyExplorerSuppressRubyWarning=1
 let g:auto_save=0
 let g:netrw_liststyle=3
@@ -136,21 +142,17 @@ let g:rbpt_colorpairs = [
 " Key mappings
 """"""""""""""""""""""""""""""""""""""""
 
-fu! ToggleCopyMode()
-if &colorcolumn > 0
-	set colorcolumn=0 norelativenumber
-else
-	set colorcolumn=80 relativenumber
-endif
-endf
-
 " Commands
 if has('ruby')
 nnoremap <C-l> :LustyBufferExplorer<CR>
 nnoremap <leader>O :LustyFilesystemExplorer<CR>
 endif
 
-nnoremap <leader>L :call ToggleCopyMode()<CR>
+" Unite
+"call unite#custom#source('file,file/new,buffer,file_rec', 'matchers', 'matcher_fuzzy')
+"nnoremap <silent> <C-p> :<C-u>Unite -start-insert file_rec/git<CR>
+"nnoremap <silent> <C-l> :<C-u>Unite buffer<CR>
+
 nnoremap <leader>U :execute "Ggrep '" . expand("<cword>") . "'" <CR>
 nnoremap <silent> <leader>n :noh<CR>
 
@@ -169,32 +171,12 @@ vnoremap <leader>P "+P
 nnoremap [a :prev<CR>:args<CR>
 nnoremap ]a :next<CR>:args<CR>
 nnoremap <leader>d :bd<CR>
-nnoremap ZD :bp<bar>sp<bar>bn<bar>bd<CR>
-nnoremap ZC :cclose<CR> :pclose<CR>
-
-" Git commands
-nnoremap <silent> <Leader>gs :Gstatus<cr>
-nnoremap <silent> <Leader>gd :Gdiff<cr>
-"nnoremap <silent> <Leader>gD :diffoff!<cr>:only<cr>
-
-" Fold helpers
-nnoremap <Space> za
-
-" Jira
-nmap <leader>j :call JiraBrowseTicket()<cr>
-fu! JiraBrowseTicket()
-let ticket = expand("<cword>")
-call system("open http://jira.ustream-adm.in/browse/" . ticket)
-endf
 
 " Clojure
 nnoremap <silent><leader>sl :w<CR>:Slamhound<CR>
 nnoremap <silent>cpR :w<CR>:Require<CR>
 nnoremap <silent>cpo :w<CR>:Eval<CR>
 let g:leiningen_no_auto_repl=1
-
-command! BE :BufExplorer
-command! SL :Slamhound
 
 """"""""""""""""""""""""""""""""""""""""
 " Fold settings
@@ -255,6 +237,9 @@ au BufRead,BufNewFile Vagrantfile* set filetype=ruby
 au FileType xml,html,php setl smartindent nocindent
 au FileType php setl keywordprg=pman
 
+" JavaScript
+au BufRead,BufNewFile *.jsm setl filetype=javascript
+
 " Markdown
 au BufRead,BufNewFile *.md setl filetype=markdown
 
@@ -280,3 +265,7 @@ au BufRead,BufNewFile *.ll setl filetype=llvm smartindent
 " Other
 """"""""""""""""""""""""""""""""""""""""
 filetype plugin indent on "required for Vundle
+
+if filereadable($HOME . "/.vimrc.secret")
+	source $HOME/.vimrc.secret
+endif
