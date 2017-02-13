@@ -107,18 +107,26 @@ set colorcolumn=80
 
 " good colorschemes: tomorrow_night_bright solarized moria wombat slate desert pyte mayansmoke
 if !exists('g:loaded_colorschemes')
-let g:loaded_colorschemes=1
-silent! colorscheme solarized
-if $COLORFGBG =~ "11;15"
-	set background=light
-else
-	set background=dark
-endif
+	let g:loaded_colorschemes=1
+	"silent! colorscheme solarized
+	silent! colorscheme tomorrow_night_bright
+	if $COLORFGBG =~ "11;15"
+		set background=light
+	else
+		set background=dark
+	endif
 endif
 
-" hi VertSplit ctermbg=235 guibg=black
-" hi StatusLine ctermfg=235 guifg=black ctermbg=black guibg=white
-" hi StatusLineNC ctermfg=234 guifg=black ctermbg=black guibg=white
+hi VertSplit ctermbg=235 guibg=black
+hi StatusLine ctermfg=235 guifg=black ctermbg=245 guibg=white
+hi StatusLineNC ctermfg=234 guifg=black ctermbg=black guibg=white
+hi TabLineFill ctermfg=235
+hi TabLine ctermfg=235 ctermbg=245
+hi TabLineSel ctermfg=gray ctermbg=black
+hi DiffAdd ctermbg=22
+hi DiffChange ctermbg=17
+hi DiffText ctermbg=19
+hi DiffDelete ctermbg=52
 
 let g:rbpt_colorpairs = [
 \ ['brown',       'RoyalBlue3'],
