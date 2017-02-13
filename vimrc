@@ -31,7 +31,7 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-vinegar'
 Bundle 'tpope/vim-projectionist'
 Bundle 'tpope/vim-leiningen'
-Bundle 'tpope/vim-rsi'
+"Bundle 'tpope/vim-rsi'
 Bundle 'tpope/vim-rhubarb'
 
 Bundle 'kien/ctrlp.vim'
@@ -55,6 +55,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'wting/rust.vim'
 Bundle 'vim-pandoc/vim-pandoc-syntax'
 Bundle 'shumphrey/fugitive-gitlab.vim'
+Bundle 'will133/vim-dirdiff'
 
 " vim-scripts.org
 Bundle 'a.vim'
@@ -262,7 +263,7 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
-au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,when-some,when-not,if-let,for,doseq,fn,go,go-loop,while,loop,catch,binding,try,reify,condp,locking,doto,testing,local-job,extend-protocol
+au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,when-some,when-not,if-let,for,doseq,fn,go,go-loop,while,loop,catch,binding,try,reify,condp,locking,doto,testing,local-job,remote-job,extend-protocol
 au FileType clojure set lispwords-=do
 au BufRead,BufNewFile *.pxi set filetype=clojure
 
