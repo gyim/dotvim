@@ -68,7 +68,7 @@ set wildignore=*.o,*.a,*.swp,*.egg-info,*.pyc,*.class,Session.vim
 set noswapfile nobackup
 set noeol binary "do not leave an empty line at the end of file"
 set encoding=utf-8
-set previewheight=15
+set previewheight=20
 set ignorecase smartcase
 set fileformats=unix,dos,mac
 set hidden visualbell
@@ -164,6 +164,7 @@ endif
 
 nnoremap <leader>U :execute "Ggrep '" . expand("<cword>") . "'" <CR>
 nnoremap <silent> <leader>n :noh<CR>
+nnoremap <silent> <leader>o :ccl<CR>:pc<CR>:lcl<CR>
 
 " Clipboard
 nnoremap <leader>c "+y
@@ -186,6 +187,12 @@ nnoremap <silent><leader>sl :w<CR>:Slamhound<CR>
 nnoremap <silent>cpR :w<CR>:Require<CR>
 nnoremap <silent>cpo :w<CR>:Eval<CR>
 let g:leiningen_no_auto_repl=1
+
+" Go
+nnoremap <leader>gt :w<CR>:GoTestFunc<CR>
+nnoremap <leader>gT :w<CR>:GoTest<CR>
+nnoremap <leader>gb :w<CR>:GoBuild<CR>
+nnoremap <leader>gi :w<CR>:GoInstall<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 " Fold settings
@@ -222,7 +229,7 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|build/.*$\|doc/.*$'
 
 " Fugitive
-autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd BufNewFile,BufRead fugitive://* set bufhidden=delete
 
 """"""""""""""""""""""""""""""""""""""""
 " Language-specific settings
