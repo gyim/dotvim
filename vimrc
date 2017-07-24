@@ -59,6 +59,9 @@ Plugin 'will133/vim-dirdiff'
 " vim-scripts.org
 Plugin 'a.vim'
 
+" Own plugins
+Plugin 'gyim/vim-boxdraw'
+
 call vundle#end()
 filetype plugin indent on
 
