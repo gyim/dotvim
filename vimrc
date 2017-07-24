@@ -2,11 +2,10 @@
 " Init Vundle
 """"""""""""""""""""""""""""""""""""""""
 set nocompatible
-filetype on
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Plugin 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 
 """"""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -60,10 +59,12 @@ Plugin 'will133/vim-dirdiff'
 " vim-scripts.org
 Plugin 'a.vim'
 
+call vundle#end()
+filetype plugin indent on
+
 """"""""""""""""""""""""""""""""""""""""
 " General settings
 """"""""""""""""""""""""""""""""""""""""
-filetype plugin indent on
 set wildignore=*.o,*.a,*.swp,*.egg-info,*.pyc,*.class,Session.vim
 set noswapfile nobackup
 set noeol binary "do not leave an empty line at the end of file"
