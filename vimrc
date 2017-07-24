@@ -231,6 +231,9 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|build/.*$\|doc/.*$'
 " Fugitive
 autocmd BufNewFile,BufRead fugitive://* set bufhidden=delete
 
+" Netrw workaround
+autocmd FileType netrw setl bufhidden=delete
+
 """"""""""""""""""""""""""""""""""""""""
 " Language-specific settings
 """"""""""""""""""""""""""""""""""""""""
