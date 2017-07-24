@@ -34,7 +34,7 @@ Bundle 'tpope/vim-leiningen'
 "Bundle 'tpope/vim-rsi'
 Bundle 'tpope/vim-rhubarb'
 
-Bundle 'kien/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'sjbach/lusty'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/unite.vim'
