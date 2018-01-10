@@ -53,8 +53,10 @@ Plugin 'JuliaLang/julia-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'wting/rust.vim'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'hashivim/vim-terraform'
 Plugin 'shumphrey/fugitive-gitlab.vim'
 Plugin 'will133/vim-dirdiff'
+Plugin 'junegunn/goyo.vim'
 
 " vim-scripts.org
 Plugin 'a.vim'
@@ -83,7 +85,8 @@ set wildmode=full wildmenu
 set cryptmethod=blowfish2
 let g:LustyExplorerSuppressRubyWarning=1
 let g:auto_save=0
-let g:netrw_liststyle=3
+let g:netrw_liststyle=0
+let g:netrw_preview = 1
 
 """"""""""""""""""""""""""""""""""""""""
 " Editing
@@ -108,6 +111,7 @@ set noantialias
 set number
 set relativenumber
 set mouse=a
+nnoremap <A-LeftMouse> <LeftMouse><C-V>
 set colorcolumn=80
 
 " good colorschemes: tomorrow_night_bright solarized moria wombat slate desert pyte mayansmoke
