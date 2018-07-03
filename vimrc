@@ -6,6 +6,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+set regexpengine=1 " fix performance issues in Ruby
 
 """"""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -57,6 +58,10 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'shumphrey/fugitive-gitlab.vim'
 Plugin 'will133/vim-dirdiff'
 Plugin 'junegunn/goyo.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'Quramy/tsuquyomi'
 
 " vim-scripts.org
 Plugin 'a.vim'
@@ -87,6 +92,7 @@ let g:LustyExplorerSuppressRubyWarning=1
 let g:auto_save=0
 let g:netrw_liststyle=0
 let g:netrw_preview = 1
+let g:jsx_ext_required = 0
 
 """"""""""""""""""""""""""""""""""""""""
 " Editing
@@ -172,6 +178,7 @@ endif
 
 nnoremap <leader>U :execute "Ggrep '" . expand("<cword>") . "'" <CR>
 nnoremap <silent> <leader>n :noh<CR>
+nnoremap <silent> <leader>m *<C-o>
 nnoremap <silent> <leader>o :ccl<CR>:pc<CR>:lcl<CR>
 
 " Clipboard
@@ -258,6 +265,7 @@ au FileType python setl expandtab
 
 " Ruby
 au FileType ruby setl expandtab sw=2 ts=2 sts=2
+au FileType ruby setl foldmethod=manual " fix performance issues
 au BufRead,BufNewFile Vagrantfile* set filetype=ruby
 
 " HTML / PHP
@@ -266,6 +274,10 @@ au FileType php setl keywordprg=pman
 
 " JavaScript
 au BufRead,BufNewFile *.jsm setl filetype=javascript
+au FileType javascript setl expandtab sw=2 ts=2 sts=2
+
+" TypeScript
+au FileType typescript setl foldmethod=manual
 
 " Markdown
 au BufRead,BufNewFile *.md setl filetype=markdown
