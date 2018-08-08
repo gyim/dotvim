@@ -7,6 +7,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 set regexpengine=1 " fix performance issues in Ruby
+set shell=/bin/bash
 
 """"""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -62,9 +63,10 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'Quramy/tsuquyomi'
+Plugin 'rizzatti/dash.vim'
 
 " vim-scripts.org
-Plugin 'a.vim'
+"Plugin 'a.vim'
 
 " Own plugins
 Plugin 'gyim/vim-boxdraw'
@@ -209,6 +211,9 @@ nnoremap <leader>gT :w<CR>:GoTest<CR>
 nnoremap <leader>gb :w<CR>:GoBuild<CR>
 nnoremap <leader>gi :w<CR>:GoInstall<CR>
 
+" Dash (documentation)
+nnoremap <silent> <leader>k :Dash<CR>
+
 """"""""""""""""""""""""""""""""""""""""
 " Fold settings
 """"""""""""""""""""""""""""""""""""""""
@@ -262,6 +267,8 @@ au FileType c,objc,cpp setl commentstring=//%s
 
 " Python
 au FileType python setl expandtab
+iabbrev pybang #!/usr/bin/env python
+iabbrev ifmain if __name__ == '__main__':<CR>    main()
 
 " Ruby
 au FileType ruby setl expandtab sw=2 ts=2 sts=2
@@ -299,6 +306,9 @@ au BufRead,BufNewFile *.pxi set filetype=clojure
 
 " LLVM
 au BufRead,BufNewFile *.ll setl filetype=llvm smartindent
+
+" Shell script
+iabbrev shbang #!/bin/bash
 
 """"""""""""""""""""""""""""""""""""""""
 " Other
