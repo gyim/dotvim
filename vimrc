@@ -63,6 +63,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'Quramy/tsuquyomi'
+Plugin 'andreshazard/vim-freemarker'
 Plugin 'rizzatti/dash.vim'
 
 " vim-scripts.org
