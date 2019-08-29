@@ -22,52 +22,33 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-leiningen'
-"Plugin 'tpope/vim-rsi'
 Plugin 'tpope/vim-rhubarb'
 
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'sjbach/lusty'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'mileszs/ack.vim'
 Plugin 'gregsexton/gitv'
-Plugin 'wlangstroth/vim-racket'
 Plugin 'guns/vim-sexp'
-"Plugin 'bhurlow/vim-parinfer'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'guns/vim-slamhound'
+Plugin 'guns/xterm-color-table.vim'
+
 Plugin 'fatih/vim-go'
 Plugin 'mattn/emmet-vim'
-"Plugin 'jlanzarotta/bufexplorer'
-Plugin 'guns/xterm-color-table.vim'
-Plugin 'tfnico/vim-gradle'
 Plugin 'JuliaLang/julia-vim'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'wting/rust.vim'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'hashivim/vim-terraform'
-Plugin 'shumphrey/fugitive-gitlab.vim'
 Plugin 'will133/vim-dirdiff'
-Plugin 'junegunn/goyo.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'andreshazard/vim-freemarker'
-Plugin 'rizzatti/dash.vim'
-
-" vim-scripts.org
-"Plugin 'a.vim'
 
 " Own plugins
 Plugin 'gyim/vim-boxdraw'
@@ -105,12 +86,6 @@ set nowrap breakindent
 set tags=./tags;$HOME
 set diffopt=filler
 
-" Operator mappings
-onoremap p i(
-onoremap q i(
-onoremap P :<c-u>normal! f(vi(<cr>
-onoremap Q :<c-u>normal! f"vi"<cr>
-
 """"""""""""""""""""""""""""""""""""""""
 " GUI settings
 """"""""""""""""""""""""""""""""""""""""
@@ -146,24 +121,6 @@ hi DiffChange ctermbg=17
 hi DiffText ctermbg=19
 hi DiffDelete ctermbg=52
 
-let g:rbpt_colorpairs = [
-\ ['brown',       'RoyalBlue3'],
-\ ['Darkblue',    'SeaGreen3'],
-\ ['darkgray',    'DarkOrchid3'],
-\ ['darkgreen',   'firebrick3'],
-\ ['darkcyan',    'RoyalBlue3'],
-\ ['darkred',     'SeaGreen3'],
-\ ['darkmagenta', 'DarkOrchid3'],
-\ ['brown',       'firebrick3'],
-\ ['gray',        'RoyalBlue3'],
-\ ['darkmagenta', 'DarkOrchid3'],
-\ ['Darkblue',    'firebrick3'],
-\ ['darkgreen',   'RoyalBlue3'],
-\ ['darkcyan',    'SeaGreen3'],
-\ ['darkred',     'DarkOrchid3'],
-\ ['red',         'firebrick3'],
-\ ]
-
 """"""""""""""""""""""""""""""""""""""""
 " Key mappings
 """"""""""""""""""""""""""""""""""""""""
@@ -174,15 +131,11 @@ nnoremap <C-l> :LustyBufferExplorer<CR>
 nnoremap <leader>O :LustyFilesystemExplorer<CR>
 endif
 
-" Unite
-"call unite#custom#source('file,file/new,buffer,file_rec', 'matchers', 'matcher_fuzzy')
-"nnoremap <silent> <C-p> :<C-u>Unite -start-insert file_rec/git<CR>
-"nnoremap <silent> <C-l> :<C-u>Unite buffer<CR>
-
 nnoremap <leader>U :execute "Ggrep '" . expand("<cword>") . "'" <CR>
 nnoremap <silent> <leader>n :noh<CR>
 nnoremap <silent> <leader>m *<C-o>
-nnoremap <silent> <leader>o :ccl<CR>:pc<CR>:lcl<CR>
+nnoremap <silent> <leader>\ :Commentary<CR>
+vnoremap <silent> <leader>\ :Commentary<CR>
 
 " Clipboard
 nnoremap <leader>c "+y
@@ -211,9 +164,6 @@ nnoremap <leader>gt :w<CR>:GoTestFunc<CR>
 nnoremap <leader>gT :w<CR>:GoTest<CR>
 nnoremap <leader>gb :w<CR>:GoBuild<CR>
 nnoremap <leader>gi :w<CR>:GoInstall<CR>
-
-" Dash (documentation)
-nnoremap <silent> <leader>k :Dash<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 " Fold settings
@@ -269,6 +219,7 @@ au FileType c,objc,cpp setl commentstring=//%s
 " Python
 au FileType python setl expandtab
 iabbrev pybang #!/usr/bin/env python
+iabbrev pybang3 #!/usr/bin/env python
 iabbrev ifmain if __name__ == '__main__':<CR>    main()
 
 " Ruby
@@ -292,9 +243,6 @@ au BufRead,BufNewFile *.md setl filetype=markdown
 
 " AsciiDoc
 au BufRead,BufNewFile *.adoc setl filetype=asciidoc
-
-" Vimoutliner
-au FileType vo_base setl foldlevel=1 foldnestmax=5 foldenable
 
 " Clojure
 au VimEnter * RainbowParenthesesToggle
