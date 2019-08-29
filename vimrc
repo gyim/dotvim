@@ -4,56 +4,63 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-set regexpengine=1 " fix performance issues in Ruby
-set shell=/bin/bash
+
+if finddir('~/.vim/bundle/Vundle.vim') != ""
+	call vundle#begin()
+	Plugin 'VundleVim/Vundle.vim'
+	set regexpengine=1 " fix performance issues in Ruby
+	set shell=/bin/bash
+endif
 
 """"""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""
 
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-leiningen'
-Plugin 'tpope/vim-rhubarb'
+if exists(':Plugin')
+	Plugin 'tpope/vim-sensible'
+	Plugin 'tpope/vim-fugitive'
+	Plugin 'tpope/vim-commentary'
+	Plugin 'tpope/vim-haml'
+	Plugin 'tpope/vim-ragtag'
+	Plugin 'tpope/vim-rails'
+	Plugin 'tpope/vim-repeat'
+	Plugin 'tpope/vim-surround'
+	Plugin 'tpope/vim-unimpaired'
+	Plugin 'tpope/vim-eunuch'
+	Plugin 'tpope/vim-sleuth'
+	Plugin 'tpope/vim-endwise'
+	Plugin 'tpope/vim-fireplace'
+	Plugin 'tpope/vim-vinegar'
+	Plugin 'tpope/vim-projectionist'
+	Plugin 'tpope/vim-leiningen'
+	Plugin 'tpope/vim-rhubarb'
+	Plugin 'tpope/vim-scriptease'
 
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'gregsexton/gitv'
-Plugin 'guns/vim-sexp'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'guns/xterm-color-table.vim'
+	Plugin 'ctrlpvim/ctrlp.vim'
+	Plugin 'gregsexton/gitv'
+	Plugin 'guns/vim-sexp'
+	Plugin 'kien/rainbow_parentheses.vim'
+	Plugin 'guns/xterm-color-table.vim'
 
-Plugin 'fatih/vim-go'
-Plugin 'mattn/emmet-vim'
-Plugin 'JuliaLang/julia-vim'
-Plugin 'wting/rust.vim'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'hashivim/vim-terraform'
-Plugin 'will133/vim-dirdiff'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'HerringtonDarkholme/yats.vim'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'andreshazard/vim-freemarker'
+	Plugin 'fatih/vim-go'
+	Plugin 'mattn/emmet-vim'
+	Plugin 'JuliaLang/julia-vim'
+	Plugin 'wting/rust.vim'
+	Plugin 'vim-pandoc/vim-pandoc-syntax'
+	Plugin 'hashivim/vim-terraform'
+	Plugin 'will133/vim-dirdiff'
+	Plugin 'pangloss/vim-javascript'
+	Plugin 'mxw/vim-jsx'
+	Plugin 'HerringtonDarkholme/yats.vim'
+	Plugin 'Quramy/tsuquyomi'
+	Plugin 'andreshazard/vim-freemarker'
 
-" Own plugins
-Plugin 'gyim/vim-boxdraw'
+	" Own plugins
+	Plugin 'gyim/vim-boxdraw'
 
-call vundle#end()
+	call vundle#end()
+endif
+
 filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""
@@ -72,7 +79,6 @@ set hlsearch
 set splitright
 set wildmode=full wildmenu
 set cryptmethod=blowfish2
-let g:LustyExplorerSuppressRubyWarning=1
 let g:auto_save=0
 let g:netrw_liststyle=0
 let g:netrw_preview = 1
@@ -97,29 +103,7 @@ set relativenumber
 set mouse=a
 nnoremap <A-LeftMouse> <LeftMouse><C-V>
 set colorcolumn=80
-
-" good colorschemes: tomorrow_night_bright solarized moria wombat slate desert pyte mayansmoke
-if !exists('g:loaded_colorschemes')
-	let g:loaded_colorschemes=1
-	"silent! colorscheme solarized
-	silent! colorscheme tomorrow_night_bright
-	if $COLORFGBG =~ "11;15"
-		set background=light
-	else
-		set background=dark
-	endif
-endif
-
-hi VertSplit ctermbg=235 guibg=black
-hi StatusLine ctermfg=235 guifg=black ctermbg=245 guibg=white
-hi StatusLineNC ctermfg=234 guifg=black ctermbg=black guibg=white
-hi TabLineFill ctermfg=235
-hi TabLine ctermfg=235 ctermbg=245
-hi TabLineSel ctermfg=gray ctermbg=black
-hi DiffAdd ctermbg=22
-hi DiffChange ctermbg=17
-hi DiffText ctermbg=19
-hi DiffDelete ctermbg=52
+silent! colorscheme tomorrow_night_bright
 
 """"""""""""""""""""""""""""""""""""""""
 " Key mappings
@@ -245,10 +229,12 @@ au BufRead,BufNewFile *.md setl filetype=markdown
 au BufRead,BufNewFile *.adoc setl filetype=asciidoc
 
 " Clojure
-au VimEnter * RainbowParenthesesToggle
-au Syntax clojure RainbowParenthesesLoadRound
-au Syntax clojure RainbowParenthesesLoadSquare
-au Syntax clojure RainbowParenthesesLoadBraces
+if exists(':RainbowParenthesesToggle')
+	au VimEnter * RainbowParenthesesToggle
+	au Syntax clojure RainbowParenthesesLoadRound
+	au Syntax clojure RainbowParenthesesLoadSquare
+	au Syntax clojure RainbowParenthesesLoadBraces
+endif
 au FileType clojure set lispwords+=ns,fact,facts,into,for,doseq,when-let,when-some,when-not,if-let,for,doseq,fn,go,go-loop,while,loop,catch,binding,try,reify,condp,locking,doto,testing,local-job,remote-job,extend-protocol
 au FileType clojure set lispwords-=do
 au BufRead,BufNewFile *.pxi set filetype=clojure

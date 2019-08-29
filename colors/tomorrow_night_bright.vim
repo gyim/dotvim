@@ -339,3 +339,16 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	delf <SID>grey_level
 	delf <SID>grey_number
 endif
+
+" ==== My changes ====
+hi VertSplit ctermbg=235 guibg=black
+hi StatusLine ctermfg=235 guifg=black ctermbg=245 guibg=white
+hi StatusLineNC ctermfg=234 guifg=black ctermbg=black guibg=white
+hi TabLineFill ctermfg=235
+hi TabLine ctermfg=235 ctermbg=245
+hi TabLineSel ctermfg=gray ctermbg=black
+hi DiffAdd ctermbg=22
+hi DiffChange ctermbg=17
+hi DiffText ctermbg=19
+hi DiffDelete ctermbg=52
+
