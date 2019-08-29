@@ -41,6 +41,9 @@ if exists(':Plugin')
 	Plugin 'guns/vim-sexp'
 	Plugin 'kien/rainbow_parentheses.vim'
 	Plugin 'guns/xterm-color-table.vim'
+	Plugin 'junegunn/fzf'
+	Plugin 'junegunn/fzf.vim'
+	Plugin 'airblade/vim-gitgutter'
 
 	Plugin 'fatih/vim-go'
 	Plugin 'mattn/emmet-vim'
@@ -79,6 +82,7 @@ set hlsearch
 set splitright
 set wildmode=full wildmenu
 set cryptmethod=blowfish2
+set updatetime=1000
 let g:auto_save=0
 let g:netrw_liststyle=0
 let g:netrw_preview = 1
@@ -110,16 +114,17 @@ silent! colorscheme tomorrow_night_bright
 """"""""""""""""""""""""""""""""""""""""
 
 " Commands
-if has('ruby')
-nnoremap <C-l> :LustyBufferExplorer<CR>
-nnoremap <leader>O :LustyFilesystemExplorer<CR>
-endif
-
 nnoremap <leader>U :execute "Ggrep '" . expand("<cword>") . "'" <CR>
-nnoremap <silent> <leader>n :noh<CR>
+nnoremap <silent> <leader>n :noh<CR>:pc<CR>:ccl<CR>
 nnoremap <silent> <leader>m *<C-o>
 nnoremap <silent> <leader>\ :Commentary<CR>
 vnoremap <silent> <leader>\ :Commentary<CR>
+
+" FZF mappings
+nnoremap <leader>r :execute "Rg " . expand("<cword>") . "" <CR>
+nnoremap <leader>b :execute "Buffers"<CR>
+nnoremap <leader>f :execute "Files"<CR>
+nnoremap <leader>C :execute "Commits"<CR>
 
 " Clipboard
 nnoremap <leader>c "+y
