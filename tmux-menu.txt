@@ -1,0 +1,22 @@
+fish shell     :: fish
+root shell     :: sudo fish
+VIM            :: vim
+Git status     :: vim -c 'view .git/index'
+Open file      :: vim (fzf)
+Open directory :: cd (find . -type d | fzf --reverse); and fish
+
+Monitoring:
+-----------
+Top            :: top
+HTop           :: htop
+NLoad          :: nload
+
+Python:
+-------
+IPython        :: ipython
+
+Help:
+-----
+Man page       :: man (find /usr/share/man /usr/local/share/man -type f | fzf --reverse)
+Cheat          :: curl -s cheat.sh/(read -P "Topic: ") | less -r
+
