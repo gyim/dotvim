@@ -10,6 +10,7 @@ Monitoring:
 Top            :: top
 HTop           :: htop
 NLoad          :: nload
+Docker logs    :: docker logs (docker ps -a --format '{{.Names}}' | fzf --reverse) | less -R
 
 Python:
 -------
