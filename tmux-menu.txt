@@ -1,9 +1,7 @@
-fish shell     :: fish
-root shell     :: sudo fish
+fish           :: fish
+root           :: sudo fish
 VIM            :: vim
 Git status     :: vim -c 'view .git/index'
-Open file      :: vim (fzf)
-Open directory :: cd (find . -type d | fzf --reverse); and fish
 
 Monitoring:
 -----------
