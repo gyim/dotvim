@@ -11,10 +11,6 @@ HTop           :: htop
 NLoad          :: nload
 Docker logs    :: docker logs (docker ps -a --format '{{.Names}}' | fzf --reverse) | less -R
 
-Python:
--------
-IPython        :: ipython
-
 Help:
 -----
 Man page       :: man (find /usr/share/man /usr/local/share/man -type f | fzf --reverse)
