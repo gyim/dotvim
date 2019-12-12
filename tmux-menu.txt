@@ -2,6 +2,7 @@ fish           :: fish
 root           :: sudo fish
 VIM            :: vim
 Git status     :: vim -c 'view .git/index'
+IPython        :: ipython
 
 Monitoring:
 -----------
