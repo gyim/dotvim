@@ -39,13 +39,13 @@ end
 
 function main
 	load_env
-	if test $argv[1] = "-t"
+	if test "$argv[1]" = "-t"
 		tmux rename-window "Run..."
 	end
 
 	set cmd (choose_command)
 
-	if test $argv[1] = "-t"
+	if test "$argv[1]" = "-t"
 		set_title $cmd
 	end
 	run_command $cmd
