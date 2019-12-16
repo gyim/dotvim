@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import signal
 import shlex
 from argparse import ArgumentParser
 from io import StringIO
@@ -57,6 +58,7 @@ def run_command(cmd):
             input()
 
 def main():
+    signal.signal(signal.SIGINT, signal.SIG_IGN)
     args = parse_args()
     if args.set_title:
         run(['tmux', 'rename-window', 'Run...'], check=True)
