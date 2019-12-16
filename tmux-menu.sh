@@ -28,7 +28,12 @@ end
 function run_command
 	set cmd (echo $argv[1] | awk 'BEGIN{FS=":: "}{print $2}')
 	if test -n $cmd
-		eval $cmd
+		if test -d $cmd
+			fish -C "cd $cmd"
+		else
+			eval $cmd
+		end
+
 		set s $status
 		if test $s -ne 0
 			echo "==== Command terminated with exit code $s ==="
