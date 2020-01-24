@@ -35,6 +35,7 @@ if exists(':Plugin')
 	Plugin 'tpope/vim-leiningen'
 	Plugin 'tpope/vim-rhubarb'
 	Plugin 'tpope/vim-scriptease'
+	Plugin 'tpope/vim-tbone'
 
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'gregsexton/gitv'
