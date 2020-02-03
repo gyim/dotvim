@@ -21,8 +21,10 @@ function choose_command
 end
 
 function set_title
-	set title (echo $argv[1] | awk 'BEGIN{FS="::"}{print $1}' | sed 's/\s*$//')
-	tmux rename-window $title
+	set title (echo $argv[1] | awk 'BEGIN{FS="::"}{print $1}' | sed 's/ *$//')
+	if test -n "$TMUX"
+		tmux rename-window $title
+	end
 end
 
 function run_command
