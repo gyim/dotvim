@@ -105,7 +105,7 @@ set guifont=Monaco:h12
 set noantialias
 set number
 set relativenumber
-set mouse=a
+set mouse=a ttymouse=sgr
 nnoremap <A-LeftMouse> <LeftMouse><C-V>
 set colorcolumn=80
 silent! colorscheme tomorrow_night_bright
