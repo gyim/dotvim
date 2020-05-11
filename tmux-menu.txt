@@ -13,6 +13,6 @@ Docker logs    :: docker logs (docker ps -a --format '{{.Names}}' | fzf --revers
 
 Help:
 -----
-Man page       :: man (find /usr/share/man /usr/local/share/man -type f | fzf --reverse)
+Man page       :: man (find /usr/share/man /usr/local/share/man -type lf | fzf --reverse)
 Cheat          :: curl -s cheat.sh/(read -P "Topic: ") | less -r
 
