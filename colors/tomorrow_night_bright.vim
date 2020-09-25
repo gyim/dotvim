@@ -328,6 +328,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("diffAdded", s:green, "", "")
 	call <SID>X("diffRemoved", s:red, "", "")
 
+	" GitGutter Colors
+	call <SID>X("GitGutterAdd", s:green, "", "")
+	call <SID>X("GitGutterChange", s:yellow, "", "")
+	call <SID>X("GitGutterDelete", s:red, "", "")
+
 	" Delete Functions
 	delf <SID>X
 	delf <SID>rgb
@@ -351,4 +356,5 @@ hi DiffAdd ctermbg=22
 hi DiffChange ctermbg=17
 hi DiffText ctermbg=19
 hi DiffDelete ctermbg=52
+hi SignColumn ctermfg=gray ctermbg=black
 
