@@ -45,6 +45,7 @@ if exists(':Plugin')
 	Plugin 'junegunn/fzf'
 	Plugin 'junegunn/fzf.vim'
 	Plugin 'airblade/vim-gitgutter'
+	Plugin 'davidhalter/jedi-vim'
 
 	Plugin 'fatih/vim-go'
 	Plugin 'mattn/emmet-vim'
@@ -191,6 +192,16 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|build/.*$\|doc/.*$'
 
 " Fugitive
 autocmd BufNewFile,BufRead fugitive://* set bufhidden=delete
+
+" jedi-vim
+let g:jedi#goto_command = "<leader>g"
+let g:jedi#goto_assignments_command = "<leader>a"
+let g:jedi#goto_stubs_command = "<leader>s"
+let g:jedi#goto_definitions_command = "<leader>G"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>u"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>R"
 
 " Netrw workaround
 autocmd FileType netrw setl bufhidden=delete
