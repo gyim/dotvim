@@ -127,6 +127,7 @@ nnoremap <leader>r :execute "Rg " . expand("<cword>") . "" <CR>
 nnoremap <leader>b :execute "Buffers"<CR>
 nnoremap <leader>f :execute "Files"<CR>
 nnoremap <leader>C :execute "Commits"<CR>
+let g:fzf_layout = { 'down': 30 }
 
 " Clipboard
 nnoremap <leader>c "+y
