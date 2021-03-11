@@ -118,8 +118,9 @@ silent! colorscheme tomorrow_night_bright
 
 " Commands
 nnoremap <leader>U :execute "Ggrep '" . expand("<cword>") . "'" <CR>
-nnoremap <silent> <leader>n :noh<CR>:pc<CR>:ccl<CR>
+nnoremap <silent> <leader>n :noh<CR>:pc<CR>:ccl<CR>:lclose<CR>
 nnoremap <silent> <leader>m *<C-o>
+nnoremap <silent> <C-w><C-t> :tab split<CR>
 nnoremap <silent> <leader>\ :Commentary<CR>
 vnoremap <silent> <leader>\ :Commentary<CR>
 
@@ -161,6 +162,10 @@ nnoremap <leader>gt :w<CR>:GoTestFunc<CR>
 nnoremap <leader>gT :w<CR>:GoTest<CR>
 nnoremap <leader>gb :w<CR>:GoBuild<CR>
 nnoremap <leader>gi :w<CR>:GoInstall<CR>
+nnoremap <leader>gg :GoImplements<CR>:lfirst<CR>
+
+" Terraform
+nnoremap <leader>T :TerraformFmt<CR>:w<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 " Fold settings
