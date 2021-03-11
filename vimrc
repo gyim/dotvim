@@ -204,6 +204,9 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|build/.*$\|doc/.*$'
 " Fugitive
 autocmd BufNewFile,BufRead fugitive://* set bufhidden=delete
 
+" FZF (uncomment for old Linux kernels)
+"let g:fzf_preview_window = ''
+
 " jedi-vim
 let g:jedi#goto_command = "<leader>g"
 let g:jedi#goto_assignments_command = "<leader>a"
