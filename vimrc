@@ -38,6 +38,7 @@ if exists(':Plugin')
 	Plugin 'tpope/vim-tbone'
 
 	Plugin 'ctrlpvim/ctrlp.vim'
+	Plugin 'easymotion/vim-easymotion'
 	Plugin 'gregsexton/gitv'
 	Plugin 'guns/vim-sexp'
 	Plugin 'kien/rainbow_parentheses.vim'
@@ -139,6 +140,10 @@ vnoremap <leader>c "+y
 vnoremap <leader>v "+p
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+
+" EasyMotion
+let g:EasyMotion_do_mapping = 0
+nmap <Space> <Plug>(easymotion-overwin-w)
 
 " Buffer management
 nnoremap [a :prev<CR>:args<CR>
